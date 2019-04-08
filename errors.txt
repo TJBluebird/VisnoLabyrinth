@@ -1,0 +1,16 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 176: invalid syntax
+    junction_option = 1:
+                        ^
+    
+
+File "game/script.rpy", line 178: invalid syntax
+    junction_option = 2:
+                        ^
+    
+
+Ren'Py Version: Ren'Py 7.1.3.1092
+Wed Apr  3 14:28:09 2019
