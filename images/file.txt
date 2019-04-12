@@ -1,0 +1,9 @@
+
+File Naming Conventions
+
+bg_101 = first image
+bg_102 = second background
+
+Characters
+char_101 = first character
+char_102 = second character
