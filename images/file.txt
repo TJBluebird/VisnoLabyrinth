@@ -9,6 +9,7 @@ char_101 = first character
 char_102 = second character
 
 bg_001 Home
+bg_002 Home - Inside
 bg_003 Crossroads
 bg_004 Bridge
 bg_005 Swamp
