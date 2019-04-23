@@ -2,7 +2,23 @@
 
     #define player "e-name" and will input from user
     define player = Character("[e_name]", color="#f44242")
+
+    #define characters
     define mother = Character("Mother", color="#f4ee42")
+
+    #define background images
+    image bg Home = "images/bg_001.png"
+    image bg Home_Inside = "images/bg_002.png"
+    image bg Crossroads = "images/bg_003.png"
+    image bg Bridge = "images/bg_004.png"
+    image bg Swamp = "images/bg_005.png"
+    image bg Labyrinth = "images/bg_006.png"
+    image bg Junction = "images/bg_007.png"
+    image bg Sirens = "images/bg_008.png"
+    image bg Chimera = "images/bg_009.png"
+    image bg Minotaur = "images/bg_010.png"
+    image bg Witch = "images/bg_011.png"
+
     define water_point = 0
     define earth_point = 0
     define blood_point = 0
@@ -40,6 +56,7 @@ label start:
     $ e_name = _return
 
     #HOME
+    scene bg Home
     centered "{size=50}{color=#f4e842}Home{/size}{/color}"
     "The odor of sage fills your nostrils as you enter your home. Once, the first thing you smelled would have been breakfast prepared by your mother. That’s your job now, along with all the other chores that she would have once done."
     "It’s already been a long morning. You’ve fed the chickens, collected the eggs, mucked out the stable and tended to the garden and now it’s time to check on your mother before you make breakfast."
