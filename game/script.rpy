@@ -56,7 +56,7 @@ label start:
     $ e_name = _return
 
     #HOME
-    scene bg Home
+    scene bg Home_Inside with dissolve
     centered "{size=50}{color=#f4e842}Home{/size}{/color}"
     "The odor of sage fills your nostrils as you enter your home. Once, the first thing you smelled would have been breakfast prepared by your mother. That’s your job now, along with all the other chores that she would have once done."
     "It’s already been a long morning. You’ve fed the chickens, collected the eggs, mucked out the stable and tended to the garden and now it’s time to check on your mother before you make breakfast."
@@ -105,7 +105,8 @@ label start:
     "Hugging her for what you know might be the last time, you leave the room but before you shut the door behind you, you hear your mother call out"
     mother "I know you don’t like it, but do not forget the dove!"
 
-    #SHRINE
+    #Garden
+    scene bg Home with dissolve
     centered "{size=50}{color=#f4e842}Garden{/size}{/color}"
     "You go into the Garden do do as your Mother wishes. Filled with a sudden sense of dread, you look around yourself, trying to take it all in like it is the last time you will ever see it."
     "It is a modest home, small by most standards, but you love it dearly. It was built entirely by your Father before he passed. You smile when you remember how proud the timbered roof had made him."
@@ -172,6 +173,7 @@ label start:
     "With the end of the ceremony you are free to start your journey. You look back at your home one last time and start out."
 
     #CORSSROAD
+    scene bg Crossroads with dissolve
     centered "{size=50}{color=#f4e842}CROSSROAD{/size}{/color}"
     "You come upon a crossroad with the option to travel left towards the bridge or right, towards the swamps"
 
@@ -192,6 +194,7 @@ label start:
 
     #(2)-1. Bridge
     label bridge:
+    scene bg Bridge with dissolve
     centered "{size=50}{color=#f4e842}BRIDGE{/size}{/color}"
     "You come across an unfriendly troll that invariably attacks you."
 
@@ -221,10 +224,12 @@ label start:
 
     #LABYRINTH ENTRANCE
     label labyrinth_entrance:
+    scene bg Labyrinth with dissolve
     centered "{size=50}{color=#f4e842}Labyrinth Entrance{/size}{/color}"
     "You arrive at the Labyrinth entrance with either the Skull, Goddess or Witch (Huntress) companion.\nWitch (Huntress) dissappears leaving the player to find their own way.\nGoddess dissappears but can appear later.\nSkull stays with the player"
 
     #JUNCTION
+    scene bg Junction with dissolve
     centered "{size=50}{color=#f4e842}Junction{/size}{/color}"
     "You are met with the choice of going left or right at the outset of the Labyrinth.\nLeft leading to the Chimera.\nRight leading to the Sirens."
 
@@ -244,6 +249,7 @@ label start:
 
     #(4)-1. Chimera
     label chimera:
+        scene bg Chimera with dissolve
         centered "{size=50}{color=#f4e842}CHIMERA{/size}{/color}"
         "You encounter a Chimera with intention to eat you.\nYou may argue and convince the Chimera not to do so.\nAsk for assistance from your companion or beg for your life."
 
@@ -269,6 +275,7 @@ label start:
 
     #(5)-1. Minotaur
     label minotaur:
+        scene bg Minotaur with dissolve
         centered "{size=50}{color=#f4e842}MINOTAUR{/size}{/color}"
         "You encounter a Minotaur with sole purpose to guard the apple.\n Considering you a threat to it, it begins to attack."
 
@@ -314,6 +321,7 @@ label start:
 
 
     label witch:
+        scene bg Witch with dissolve
         centered "{size=50}{color=#f4e842}WITCH{/size}{/color}"
         "There are 3 options"
 
@@ -361,6 +369,7 @@ label start:
 
     #(4)-2.Sirens
     label sirens:
+        scene bg Sirens with dissolve
         centered "{size=50}{color=#f4e842}SIRENS{/size}{/color}"
         "You encounter Sirens, eventuating in the riding of a boat."
 
@@ -393,6 +402,7 @@ label start:
 
     #(2)-2.swamp
     label swamp:
+        scene bg Swamp with dissolve
         centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
         "Swamp: You arrive at a swamp and meet a talkative skull,\npromising that it can help your mother with a golden apple.\nPartnering with the skull takes you to the Labyrinth entrance."
 
