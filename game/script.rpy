@@ -242,10 +242,91 @@ label start:
 
     label junction_result:
         if junction_option == 1:
-            jump chimera
+            jump chimera_puzzle
 
         elif junction_option == 2:
             jump sirens
+
+    ####################################Puzzle-Start##########################
+    label chimera_puzzle:
+        scene bg Chimera with dissolve
+label puzzle:
+
+    python:
+        k = Puzzle()
+        k.set_sensitive(False)
+        k.show()
+
+label quick_continue:
+    
+    while True:
+
+        python:
+        
+            ui.textbutton("Give Up", ui.jumps("giveup"), xalign=.02, yalign=.98)
+            k.set_sensitive(True)
+            event = k.interact()
+
+            if event:
+                renpy.checkpoint()
+            
+            k.set_sensitive(False)
+        # e "[event]"
+        if event == "win":
+            jump win
+
+
+label win:
+
+    "Finished!"
+    
+    "Congratulations!"
+    python:
+        k.hide()
+    jump chimera
+
+label giveup:
+
+    $ k.set_sensitive(False)
+    
+    menu:
+        "Are you sure you want to give up?"
+
+        "Yes":
+
+            "Oh well, better luck next time."
+            python:
+                k.hide()
+            jump chimera
+
+        "No":
+            python:
+                k.hide()
+            jump puzzle
+
+label newgame:
+
+    menu:    
+        "Would you like to try again?"
+
+        "Yes":
+            pass
+
+        "No":
+            "Well, I hope to see you again soon."
+            jump chimera
+
+    "Okay, here we go!"
+    
+    scene bg table
+
+    python:
+        k = Puzzle()
+        k.sensitive = False
+        k.show()    
+
+    jump continue    
+    ####################################Puzzle-End##########################         
 
     #(4)-1. Chimera
     label chimera:
