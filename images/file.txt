@@ -1,1 +1,21 @@
 
+File Naming Conventions
+
+bg_101 = first image
+bg_102 = second background
+
+Characters
+char_101 = first character
+char_102 = second character
+
+bg_001 Home
+bg_002 Home - Inside
+bg_003 Crossroads
+bg_004 Bridge
+bg_005 Swamp
+bg_006 Labyrinth
+bg_007 Junction
+bg_008 Sirens
+bg_009 Chimera
+bg_010 Minotaur
+bg_011 Witch
