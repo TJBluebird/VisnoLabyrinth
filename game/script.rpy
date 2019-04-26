@@ -63,6 +63,9 @@ label start:
     call screen test
     $ e_name = _return
 
+    #play background music
+    play music "sound/BackgroundMusic.mp3" fadein 1.5
+
     #HOME
     scene bg Home_Inside with dissolve
     centered "{size=50}{color=#f4e842}Home{/size}{/color}"
