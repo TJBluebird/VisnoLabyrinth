@@ -34,6 +34,14 @@
     define swamp_option = 0
     define decline_skull_option = 0
 
+    #Clickable buttons on crossroads scene
+    screen imagemap:
+        imagemap:
+            ground "images/crossroad.png"
+            hover "images/crossroad-hover.png"  
+            hotspot (339, 87, 390, 189) action Jump("swamp")
+            hotspot (360, 266, 376, 174) action Jump("bridge")   
+
 
 
 screen test:
@@ -176,6 +184,11 @@ label start:
     scene bg Crossroads with dissolve
     centered "{size=50}{color=#f4e842}CROSSROAD{/size}{/color}"
     "You come upon a crossroad with the option to travel left towards the bridge or right, towards the swamps"
+    "Click the sgin where you want to go"
+
+    #image button to choose bridge or swamp
+    call screen imagemap
+
 
     #(2)Branch: Bridge or Swamp?
     menu:
