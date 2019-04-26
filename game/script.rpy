@@ -184,6 +184,11 @@ label start:
     scene bg Crossroads with dissolve
     centered "{size=50}{color=#f4e842}CROSSROAD{/size}{/color}"
     "You come upon a crossroad with the option to travel left towards the bridge or right, towards the swamps"
+    "You walk down a well travelled path toward the woods. The bright morning sun filters down through the groves of pine and oak all around you and the air is filled with birdsong leaving you feeling warm and tranquil."
+    "Soon, you pass by the furthest point that you have ever travelled. You pause momentarily at the boundary of everything that you have known. Nerves making it difficult for you to make the next step. You take a deep breath and pray that you will make it back in time to see your mother again."
+    "You notice that it is not long before the forest begins to change. The trees that are straight and sturdy around your home are thin, gnarled and misshapen, their tendrils seeming to reach out for you as you pass."
+    "The branches sway in the breeze, further enhancing the image of grasping hands. The formless shadows seem to move and dance, almost as if free to move about on their own."
+    "You reach a fork in the path. A signpost marks the two directions. It is clearly old but the directions are still legible and indicate a bridge to the left and a swamp to the right."
     "Click the sgin where you want to go"
 
     #image button to choose bridge or swamp
