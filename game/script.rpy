@@ -40,10 +40,20 @@
             ground "images/crossroad.png"
             hover "images/crossroad-hover.png"  
             hotspot (339, 87, 390, 189) action Jump("swamp")
-            hotspot (360, 266, 376, 174) action Jump("bridge")   
+            hotspot (360, 266, 376, 174) action Jump("bridge") 
 
+    python:
+        renpy.music.register_channel("Fire", mixer="sfx")  
+        renpy.music.register_channel("outsideHome", mixer="sfx")
+        renpy.music.register_channel("crossroads", mixer="sfx")  
+        renpy.music.register_channel("bridge", mixer="sfx") 
+        renpy.music.register_channel("swamp", mixer="sfx")  
+        renpy.music.register_channel("entrance", mixer="sfx")
+        renpy.music.register_channel("Bull", mixer="sfx")  
+        renpy.music.register_channel("thunder", mixer="sfx")  
+        renpy.music.register_channel("waves", mixer="sfx")          
 
-
+#Frame for input user's name
 screen test:
     frame:
         xpadding 40
@@ -52,8 +62,6 @@ screen test:
             text "Type your name"
             input
         align(.5, .5)
-
-
 
 
 label start:
@@ -65,6 +73,9 @@ label start:
 
     #play background music
     play music "sound/BackgroundMusic.mp3" fadein 1.5
+
+    #play Fire.mp3 sound 
+    play Fire "sound/Fire.mp3" fadein 2.0
 
     #HOME
     scene bg Home_Inside with dissolve
@@ -116,8 +127,15 @@ label start:
     "Hugging her for what you know might be the last time, you leave the room but before you shut the door behind you, you hear your mother call out"
     mother "I know you don’t like it, but do not forget the dove!"
 
+    #Sound Fire.mp3 Stop
+    stop Fire fadeout 2.0
+
     #Garden
     scene bg Home with dissolve
+
+    #play outsideHome.mp3 sound 
+    play outsideHome "sound/outsideHome.mp3" fadein 2.0
+
     centered "{size=50}{color=#f4e842}Garden{/size}{/color}"
     "You go into the Garden do do as your Mother wishes. Filled with a sudden sense of dread, you look around yourself, trying to take it all in like it is the last time you will ever see it."
     "It is a modest home, small by most standards, but you love it dearly. It was built entirely by your Father before he passed. You smile when you remember how proud the timbered roof had made him."
@@ -183,6 +201,12 @@ label start:
     player "Lo to the Three, that we may pass free"
     "With the end of the ceremony you are free to start your journey. You look back at your home one last time and start out."
 
+    #Sound outsideHome.mp3 Stop
+    stop outsideHome fadeout 2.0
+
+    #play crossroads.mp3 sound 
+    play crossroads "sound/crossroads.mp3" fadein 2.0
+
     #CORSSROAD
     scene bg Crossroads with dissolve
     centered "{size=50}{color=#f4e842}CROSSROAD{/size}{/color}"
@@ -193,6 +217,9 @@ label start:
     "The branches sway in the breeze, further enhancing the image of grasping hands. The formless shadows seem to move and dance, almost as if free to move about on their own."
     "You reach a fork in the path. A signpost marks the two directions. It is clearly old but the directions are still legible and indicate a bridge to the left and a swamp to the right."
     "Click the sgin where you want to go"
+
+    #Sound crossroads.mp3 Stop
+    stop crossroads fadeout 2.0
 
     #image button to choose bridge or swamp
     call screen imagemap
@@ -215,9 +242,17 @@ label start:
 
     #(2)-1. Bridge
     label bridge:
+
     scene bg Bridge with dissolve
+
+    #play bridge.mp3 sound 
+    play bridge "sound/bridge.mp3" fadein 2.0
+
     centered "{size=50}{color=#f4e842}BRIDGE{/size}{/color}"
     "You come across an unfriendly troll that invariably attacks you."
+
+    #Sound bridge.mp3 Stop
+    stop bridge fadeout 2.0
 
     #(3)Branch: Troll or Hectate
     menu:
@@ -245,7 +280,12 @@ label start:
 
     #LABYRINTH ENTRANCE
     label labyrinth_entrance:
+
     scene bg Labyrinth with dissolve
+
+    #play entrance.mp3 sound 
+    play entrance "sound/entrance.mp3" fadein 2.0
+
     centered "{size=50}{color=#f4e842}Labyrinth Entrance{/size}{/color}"
     "You arrive at the Labyrinth entrance with either the Skull, Goddess or Witch (Huntress) companion.\nWitch (Huntress) dissappears leaving the player to find their own way.\nGoddess dissappears but can appear later.\nSkull stays with the player"
 
@@ -253,6 +293,9 @@ label start:
     scene bg Junction with dissolve
     centered "{size=50}{color=#f4e842}Junction{/size}{/color}"
     "You are met with the choice of going left or right at the outset of the Labyrinth.\nLeft leading to the Chimera.\nRight leading to the Sirens."
+
+    #Sound entrance.mp3 Stop
+    stop entrance fadeout 2.0
 
     #(4)Branch: Chimera or Sirens
     menu:
@@ -271,6 +314,10 @@ label start:
     ####################################Puzzle-Start##########################
     label chimera_puzzle:
         scene bg Chimera with dissolve
+
+        #play Fire.mp3 sound 
+        play Fire "sound/Fire.mp3" fadein 2.0
+
 label puzzle:
 
     python:
@@ -355,6 +402,9 @@ label newgame:
         centered "{size=50}{color=#f4e842}CHIMERA{/size}{/color}"
         "You encounter a Chimera with intention to eat you.\nYou may argue and convince the Chimera not to do so.\nAsk for assistance from your companion or beg for your life."
 
+    #Sound Fire.mp3 Stop
+    stop Fire fadeout 2.0
+
     #(5)Branch: Death or Minotaur or Argue
     menu:
         "1. Beg for your life":
@@ -377,9 +427,17 @@ label newgame:
 
     #(5)-1. Minotaur
     label minotaur:
+
         scene bg Minotaur with dissolve
+
+        #play Bull.mp3 sound 
+        play Bull "sound/Bull.mp3" fadein 2.0
+
         centered "{size=50}{color=#f4e842}MINOTAUR{/size}{/color}"
         "You encounter a Minotaur with sole purpose to guard the apple.\n Considering you a threat to it, it begins to attack."
+
+        #Sound Bull.mp3 Stop
+        stop Bull fadeout 2.0
 
     #(6)Branch: 'Reason With it' or 'I am only here for a rest'
     menu:
@@ -424,8 +482,15 @@ label newgame:
 
     label witch:
         scene bg Witch with dissolve
+
+        #play thunder.mp3 sound 
+        play thunder "sound/thunder.mp3" fadein 2.0
+
         centered "{size=50}{color=#f4e842}WITCH{/size}{/color}"
         "There are 3 options"
+
+        #Sound thunder.mp3 Stop
+        stop thunder fadeout 2.0 
 
     #(8)Branch: Good Endig or Neutral Ending or Bad Ending
     menu:
@@ -472,8 +537,15 @@ label newgame:
     #(4)-2.Sirens
     label sirens:
         scene bg Sirens with dissolve
+
+        #play waves.mp3 sound 
+        play waves "sound/waves.mp3" fadein 2.0
+
         centered "{size=50}{color=#f4e842}SIRENS{/size}{/color}"
         "You encounter Sirens, eventuating in the riding of a boat."
+
+        #Sound waves.mp3 Stop
+        stop waves fadeout 2.0
 
      #(9)Branch: Drawn or Tricked/Drown or Minotaur
     menu:
@@ -504,9 +576,17 @@ label newgame:
 
     #(2)-2.swamp
     label swamp:
-        scene bg Swamp with dissolve
-        centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
-        "Swamp: You arrive at a swamp and meet a talkative skull,\npromising that it can help your mother with a golden apple.\nPartnering with the skull takes you to the Labyrinth entrance."
+
+    scene bg Swamp with dissolve
+
+    #play swamp.mp3 sound 
+    play swamp "sound/swamp.mp3" fadein 2.0
+
+    centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
+    "Swamp: You arrive at a swamp and meet a talkative skull,\npromising that it can help your mother with a golden apple.\nPartnering with the skull takes you to the Labyrinth entrance."
+
+    #Sound swamp.mp3 Stop
+    stop swamp fadeout 2.0
 
     #(9)Branch: 'Partner with Skull' or 'Decline Skull'
     menu:
@@ -545,8 +625,18 @@ label newgame:
             jump meet_witch
 
     label meet_witch:
+
+        scene bg Witch with dissolve
+
+        #play thunder.mp3 sound 
+        play thunder "sound/thunder.mp3" fadein 2.0
+
         centered "{size=50}{color=#f4e842}MEET WITCH{/size}{/color}"
         "You meet the Witch (disguised as a huntress) who leads you to the Labyrinth Entrance."
+
+        #Sound thunder.mp3 Stop
+        stop thunder fadeout 2.0
+        
         jump labyrinth_entrance
 
 
