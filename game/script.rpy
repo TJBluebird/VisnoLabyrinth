@@ -590,6 +590,9 @@ label newgame:
     label sirens:
         scene bg Sirens with dissolve
         centered "{size=50}{color=#f4e842}SIRENS{/size}{/color}"
+
+        #Background music temporarily stop
+        stop music fadeout 1.5
          
         #Mermaid Song Quizz Start#############################################################
         "Listen and watch carefully Mermaid song video"
@@ -601,6 +604,9 @@ label newgame:
         hide movie with dissolve
         "Quizz: Which is the correct order of musical notes?"
         #Mermaid Song Quizz Finish#############################################################
+
+        #Play background music again
+        play music "sound/BackgroundMusic.mp3" fadein 1.5
 
         #play waves.mp3 sound 
         play waves "sound/waves.mp3" fadein 2.0
