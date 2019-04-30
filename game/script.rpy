@@ -6,6 +6,7 @@
     #define characters
     define mother = Character("Mother", color="#f4ee42")
     define troll = Character("Troll", color="#f4ee42")
+    define huntress = Character("Huntress", color="#567756")
 
     #define background images
     image bg Home = "images/bg_001.png"
@@ -317,20 +318,48 @@ label start:
     player "I'm going to my uncles home!"
     troll "The only place your going is in my belly"
 
-    #Sound bridge.mp3 Stop
-    stop bridge fadeout 2.0
-
     if water_point == 2:
         jump troll
 
-    elif water_point == 1:
-        jump labyrinth_entrance
+    player "AHHHHHHHHH"
+    troll "Raaaaggh - Uck!"
+    "The troll’s terrifying roar is abruptly cut short with a single thunk.\nWith a look of surprise, the Troll falls forward, dead."
+    "From his back sprouts an arrow, buried deep within its thick skin.\nBehind him stands a Huntress."  
+    player "What?.."
+    huntress "It's your lucky day, Sweetheart."
+    huntress "Trolls like to play with their food.\nToday he choked on it."
+    player "What..what happend?"
+    huntress "LAUGHS\nSuch strength in these beasts, easily toppled if you know just where to strike."
+    player "Why did he attack me?"
+    huntress "Maybe you should ask him?"
+    player "Uh... I'm good."
+    huntress "Are you good? You look lost…"
+    player "I'm heading to the north part of the woods, to see my uncle."
+    huntress "How serendipitous!  It so happens that I'm going north as well, I can help you find your uncle’s house."
+    huntress "There are worse things in these woods than Trolls, after all."
+    player "THANK YOU! You're so kind.\nI was so scared that I might meet a witch."
+    huntress "LAUGHS\nWe wouldn't want that now would we."    
 
-    #(3)-1. Troll
-    label troll:
-        "Because you did not offer water to Hecate at the Shrine, she does not intervene on your behalf."
-        "The End"
-        return
+    #Sound bridge.mp3 Stop
+    stop bridge fadeout 2.0
+
+    "Suddenly the entire world freezes, as if time itself has stopped.\nNot a sound is heard, the trees no longer sway in the breeze.\nEven a passing bird hangs stationary mid-flight whilst overhead.\nThe troll’s charge, stopped completely, it’s arm still frozen overhead."
+    "You look around, wide eyed at the impossibility of it all when at your side you spy a most unexpected sight."
+    "Immediately beside you stands a woman in a diaphanous robe of flowing red silk, cinched at the waist with a belt of the same material."
+    "In her right hand she holds a lit torch, though its flame provides no light.\nIn her left she holds a dagger, not in a threatening manner but pointed upward."
+    "Her stance and posture reminds you of a statue, though this may be because but for her robe, slowly billowing in the complete absence of any breeze, she has been completely immobile, as if inanimate."
+    "Despite this all, her most striking feature is her face, or more accurately, ‘faces’ as there is not one but three of them."
+    "The one facing you, set below a pair of glowing golden eyes is a mouth curved slightly upward in a knowing smile."
+    "What looks almost as if built into the side of her head is another face, seemingly identical in every way but for her scowling expression, her upper lip slightly curled to showing teeth underneath."
+    "To her right, yet another face, this one laughing hysterically, though no sound escapes her."
+    "At what she is laughing, you can only guess."
+    
+
+
+
+  
+
+    
 
 
     #LABYRINTH ENTRANCE
@@ -721,6 +750,12 @@ label newgame:
         
         jump labyrinth_entrance
 
+    #(3)-1. Troll
+    label troll:
+        "Because you did not offer water to Hecate at the Shrine, she does not intervene on your behalf."
+        "Troll eats you."
+        centered "{size=50}{color=#f4e842}END{/size}{/color}"
+        return
 
 
 return
