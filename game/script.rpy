@@ -5,6 +5,7 @@
 
     #define characters
     define mother = Character("Mother", color="#f4ee42")
+    define troll = Character("Troll", color="#f4ee42")
 
     #define background images
     image bg Home = "images/bg_001.png"
@@ -277,21 +278,6 @@ label start:
     call screen imagemap
 
 
-    #(2)Branch: Bridge or Swamp?
-    menu:
-        "1. Left to Bridge":
-            $ crossroad_option = 1
-
-        "2. Right to Swamp":
-            $ crossroad_option = 2
-
-    label crossroad_result:
-        if crossroad_option == 1:
-            jump bridge
-
-        elif crossroad_option == 2:
-            jump swamp
-
     #(2)-1. Bridge
     label bridge:
 
@@ -301,34 +287,51 @@ label start:
     play bridge "sound/bridge.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}BRIDGE{/size}{/color}"
-    "You come across an unfriendly troll that invariably attacks you."
+    "You come to a clearing in the forest and can see a well-kept bridge that crosses over a river."
+    "The bank on either side is bright and green, almost like a perfectly manicured garden."
+    "You breathe a sigh of relief. This was the right choice. It looks so much less scary than the swamp."
+    player "I'm so glad I didn't go that way, I would've ended up lost in some bog for sure"
+    "As you come closer to the bridge, you see that the water swirls fiercely beneath the stone arches of the bridge and tears at the banks, taking chunks of earth with it as it rushes downstream."
+    "There isn't a living thing in sight.\nNo birds.\nNo butterflies.\nOnly the hiss of water.\n"
+    "You no longer feel quite so confident about your choice."
+    player "This feels....wrong"
+    player "What was mother always singing about bridges?"
+    player "Oh that's it, I remember now"
+    player "Beware houses made of candy ♪\nAnd you'll be good and dandy\nBeware tunnels and bridges\nAnd life will be your riches♪"
+    player "But visit a witch or step on a bridge♪\nAnd your life will end in a ditch♪"
+    player "hmmmm\nThe bridge looks safe\nI’m sure the water is moving far too fast for anything to be hiding underneath."
+    player "........"
+    player "I don't want to go back\nThe bog looked more dangerous than this silly bridge"
+    "The moment you set foot on the bridge, a Troll springs out of the water, blocking your way forward."
+    player "AHH~~"
+    troll "What's a silly billy goat like you doing on my bridge all by yourself?"
+    player "I'm...I'm...I'm not alone"
+    troll "You're RIGHT! Because I'm here!"
+    player "I'm with a ...hunter"
+    troll "No you're not my tasty treat, Ha Ha Ha!!"
+    "You start to cry"
+    player "I am! I am! there's a hunter! You ugly Troll!"
+    troll "Then why are you crying my little goat?"
+    "Crying intensifies"
+    troll "That's okay, cry.  Your tears will marinate the meat"
+    player "I'm going to my uncles home!"
+    troll "The only place your going is in my belly"
 
     #Sound bridge.mp3 Stop
     stop bridge fadeout 2.0
 
-    #(3)Branch: Troll or Hectate
-    menu:
-        "1. Troll eats you":
-            $ bridge_option = 1
+    if water_point == 2:
+        jump troll
 
-        "2. Saved by Hectate":
-            $ bridge_option = 2
-
-    label bridge_result:
-        if bridge_option == 1:
-            jump troll
-
-        elif bridge_option == 2:
-            jump hectate
+    elif water_point == 1:
+        jump labyrinth_entrance
 
     #(3)-1. Troll
     label troll:
-        "Your decision resultes in death at the hands (or the mouth) of a troll."
+        "Because you did not offer water to Hecate at the Shrine, she does not intervene on your behalf."
+        "The End"
         return
 
-    #(3)-2. Hectate
-    label hectate:
-        "You are saved from the troll by the Goddess Hecate who in turn takes you directly to the Labyrinth entrance"
 
     #LABYRINTH ENTRANCE
     label labyrinth_entrance:
@@ -339,7 +342,12 @@ label start:
     play entrance "sound/entrance.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}Labyrinth Entrance{/size}{/color}"
-    "You arrive at the Labyrinth entrance with either the Skull, Goddess or Witch (Huntress) companion.\nWitch (Huntress) dissappears leaving the player to find their own way.\nGoddess dissappears but can appear later.\nSkull stays with the player"
+
+    "You are saved from the troll by the Goddess Hecate who in turn takes you directly to the Labyrinth entrance"
+
+    
+   
+   
 
     #JUNCTION
     scene bg Junction with dissolve
