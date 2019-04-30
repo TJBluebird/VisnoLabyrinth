@@ -34,6 +34,9 @@
     define swamp_option = 0
     define decline_skull_option = 0
 
+    #Add points when Mermaid Song Quizz failed
+    define MermaidSong_fail = 0
+
     #Clickable buttons on crossroads scene
     screen imagemap:
         imagemap:
@@ -41,6 +44,55 @@
             hover "images/crossroad-hover.png"  
             hotspot (339, 87, 390, 189) action Jump("swamp")
             hotspot (360, 266, 376, 174) action Jump("bridge") 
+
+    #Mermaid Song image define
+    image movie = Movie(size=(800, 600), xpos=.5, ypos=.8)
+
+    #Clickable buttons on Sirens scene with Mermaid Song quizz
+    screen imagemap2:
+        imagemap:
+            ground "images/MermaidSong.png"
+            hover "images/MermaidSong-hover.png"  
+            hotspot (240, 35, 815, 101) action Show("test1")
+            hotspot (244, 155, 814, 97) action Show("test2") 
+            hotspot ((244, 285, 815, 98)) action Show("test3")
+            hotspot ((238, 407, 819, 100)) action Jump("sirens3")  
+
+    #When User click 1. show test1
+    screen test1:
+        $ MermaidSong_fail += 1
+        frame:
+            xpadding 40
+            ypadding 40
+            vbox:
+                text "You are wrong!"
+                textbutton _("close"):
+                    action Hide("test1")
+            align (.5, .5)  
+
+    #When User click 2. show test2
+    screen test2:
+        $ MermaidSong_fail += 1
+        frame:
+            xpadding 40
+            ypadding 40
+            vbox:
+                text "You are wrong!"
+                textbutton _("close"):
+                    action Hide("test2")
+            align (.5, .5) 
+
+    #When User click 3. show test3
+    screen test3:
+        $ MermaidSong_fail += 1
+        frame:
+            xpadding 40
+            ypadding 40
+            vbox:
+                text "You are wrong!"
+                textbutton _("close"):
+                    action Hide("test3")
+            align (.5, .5)                
 
     python:
         renpy.music.register_channel("Fire", mixer="sfx")  
@@ -537,12 +589,28 @@ label newgame:
     #(4)-2.Sirens
     label sirens:
         scene bg Sirens with dissolve
+        centered "{size=50}{color=#f4e842}SIRENS{/size}{/color}"
+         
+        #Mermaid Song Quizz Start#############################################################
+        "Listen and watch carefully Mermaid song video"
+
+        play movie "Mermaid song.ogv" noloop
+        show movie with dissolve
+        "Listen and watch carefully Mermaid song video"
+        stop movie
+        hide movie with dissolve
+        "Quizz: Which is the correct order of musical notes?"
+        #Mermaid Song Quizz Finish#############################################################
 
         #play waves.mp3 sound 
         play waves "sound/waves.mp3" fadein 2.0
 
-        centered "{size=50}{color=#f4e842}SIRENS{/size}{/color}"
-        "You encounter Sirens, eventuating in the riding of a boat."
+        #Call Options for Mermaid Song Quizz
+        call screen imagemap2
+
+        #When user has right answer
+        label sirens3:
+        "Your answer is Corret!!!, Excellent!!" 
 
         #Sound waves.mp3 Stop
         stop waves fadeout 2.0
