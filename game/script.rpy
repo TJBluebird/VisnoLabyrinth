@@ -1,5 +1,9 @@
 ﻿init:
 
+    #Variables for Timer on Puzzle on "Chimera"
+    $ timer_range = 0
+    $ timer_jump = 0
+
     #define player "e-name" and will input from user
     define player = Character("[e_name]", color="#f44242")
 
@@ -7,6 +11,11 @@
     define mother = Character("Mother", color="#f4ee42")
     define troll = Character("Troll", color="#f4ee42")
     define huntress = Character("Huntress", color="#567756")
+    define hectate_calm = Character("Hectate_Calm", color="#bf80b2")
+    define hectate_angry = Character("Hectate_Angry", color="#42f4a7")
+    define hectate_insane = Character("Hectate_Insane", color="#4f3333")
+    define bones = Character("Bones", color="#fffcfc")
+    
 
     #define background images
     image bg Home = "images/bg_001.png"
@@ -105,7 +114,20 @@
         renpy.music.register_channel("entrance", mixer="sfx")
         renpy.music.register_channel("Bull", mixer="sfx")  
         renpy.music.register_channel("thunder", mixer="sfx")  
-        renpy.music.register_channel("waves", mixer="sfx")          
+        renpy.music.register_channel("waves", mixer="sfx")  
+
+     #Timer bar for Puzzle----------------------------------------------------------------------------
+    transform alpha_dissolve:
+        alpha 0.0
+        linear 0.5 alpha 1.0
+        on hide:
+            linear 0.5 alpha 0
+    # This is to fade the bar in and out, and is only required once in your script
+    screen countdown:
+        timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
+        bar value time range timer_range xalign 0.5 yalign 0.9 xmaximum 300 at alpha_dissolve # This is the timer bar.
+      
+    #-------------------------------------------------------------------------------------------------           
 
 #Frame for input user's name
 screen test:
@@ -353,7 +375,36 @@ label start:
     "What looks almost as if built into the side of her head is another face, seemingly identical in every way but for her scowling expression, her upper lip slightly curled to showing teeth underneath."
     "To her right, yet another face, this one laughing hysterically, though no sound escapes her."
     "At what she is laughing, you can only guess."
-    
+
+    player "Who are you?  What’s happening?"
+    hectate_calm "Do you not already know us child?"
+    hectate_calm "Have you not before prayed for our notice, our protection?"
+    "Sudden realisation hits you.\nThis is the figure from your shrine!\nWater.\nWith an offering of water you have summoned this being?\nBut how is that possible?"
+    player "Lo to the watcher, with power to see"
+    "You manage to stammer, your mind feeling sluggish at the shock of it all."
+    hectate_calm "Indeed, that is are name given to us by some, though like us, it is one amongst many"
+    "The faces turn so that the scowling expression is turned toward you."
+    hectate_angry "Though you can hardly keep calling us Watcher throughout this whole mess, do not believe for a second that you can!"
+    player "Then...then what should I call you?"
+    "Just as quickly, the head spins so that the smiling face is once again turned towards you."
+    hectate_calm "We have gone by many names child. The Watcher is but one. Night-mother by some, The Fates by others." 
+    hectate_calm "The Wheel-weaver or Webspinner, the Taker of Light or Daughter of Moon. Endonia, Artemis, Selene or Hera. All are part true, all are part lies.  All are we.  You, child, will call us…"
+    hectate_insane "Frank!"
+    "The head spins to show you the laughing face, having finally deigned to pay some attention."
+    hectate_insane "You should call us Frank!"
+    "The head spins back to the first, and with a sigh and a roll of her eyes"
+    hectate_angry "No!"
+    hectate_calm "Hecate...call us Hecate"
+    player "But, how did I summon you? Surely a little water could not do this?"
+    "Hearing laughter from the oddly jovial face, you fear you may have said something foolish."
+    hectate_calm "You did not summon us child. We come and go of our own volition. Though you offering was appreciated, it was inconsequential."
+    hectate_calm "Though we appear now, it is but for our own interest, our interest in you. Your offering was not the catalyst."
+    player "You’re interested in me?  Why?"
+    "Shivering at the thought, even if you have no idea what a census taker or Chianti is"
+    player "Test me with what?"
+    "The first face towards you again, it's knowing smile now back.\nIt says nothing further, instead the torch in Hecate’s hand flashes and you both disappear."
+    "Time resumes in the surrounding scene. The troll, now free to move but alone stops short in its charge.\nConfused that you appear to have simply vanished it scratches its head and mutters "
+
 
 
 
@@ -400,12 +451,18 @@ label start:
         elif junction_option == 2:
             jump sirens
 
-    ####################################Puzzle-Start##########################
+    ####################################Puzzle-Start#######################################################
     label chimera_puzzle:
         scene bg Chimera with dissolve
 
         #play Fire.mp3 sound 
         play Fire "sound/Fire.mp3" fadein 2.0
+    
+    #Timer for Puzzle
+    $ time = 10
+    $ timer_range = 10
+    $ timer_jump = "too_slow"
+    show screen countdown
 
 label puzzle:
 
@@ -484,6 +541,11 @@ label newgame:
 
     jump continue    
     ####################################Puzzle-End##########################         
+
+    #Time out
+    label too_slow:
+        "You are too slow!"
+
 
     #(4)-1. Chimera
     label chimera:
@@ -694,7 +756,23 @@ label newgame:
     play swamp "sound/swamp.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
-    "Swamp: You arrive at a swamp and meet a talkative skull,\npromising that it can help your mother with a golden apple.\nPartnering with the skull takes you to the Labyrinth entrance."
+    "The path you've followed has petered into a slushy muck, each step you take suctions itself around your shoes, with effort you pull each foot from the sloppy ground. "
+    "Bugs swarm in buzzing clouds, frogs croak, beady eyes of menacing colours peer between the rotten wood and shallow lagoons as stagnant pools of green water find there entrances in between your toes. "
+    player "I knew I should've gone the other way!"
+    player "I'm turning into a mosquito haberdashery"
+    player "By the looks of this swamp, hopefully that's the worst that happens"
+    bones "Try living here sweetheart! It's a dry biscuit I can assure you."
+    "Try living here sweetheart! It's a dry biscuit I can assure you"
+    player "AH~~~~~~~"
+    bones "AH~~~~~~~"
+    player "AH~~~~~~~"
+    bones "AH~~~~~~~ Screaming is fun!"
+    "The girl goes to retreat."
+    bones "Wait little lass, I'm not bad to the bone, trust me."
+    player "I've lost my mind! it's this swamp! I don't know where I'm going."
+    bones "I've lost my mind, my muscles, most recently my arm to a cheeky mutt! Stupid dogs..."
+    player "This isn't possible!"
+    bones "Ohhh I wish it wasn't, I had a bite of a golden apple.  ONE.MEASLY. BITE, if only I had eaten the whole thing"
 
     #Sound swamp.mp3 Stop
     stop swamp fadeout 2.0
