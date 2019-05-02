@@ -1,9 +1,5 @@
 ﻿init:
 
-    #Variables for Timer on Puzzle on "Chimera"
-    $ timer_range = 0
-    $ timer_jump = 0
-
     #define player "e-name" and will input from user
     define player = Character("[e_name]", color="#f44242")
 
@@ -116,18 +112,6 @@
         renpy.music.register_channel("thunder", mixer="sfx")  
         renpy.music.register_channel("waves", mixer="sfx")  
 
-     #Timer bar for Puzzle----------------------------------------------------------------------------
-    transform alpha_dissolve:
-        alpha 0.0
-        linear 0.5 alpha 1.0
-        on hide:
-            linear 0.5 alpha 0
-    # This is to fade the bar in and out, and is only required once in your script
-    screen countdown:
-        timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
-        bar value time range timer_range xalign 0.5 yalign 0.9 xmaximum 300 at alpha_dissolve # This is the timer bar.
-      
-    #-------------------------------------------------------------------------------------------------           
 
 #Frame for input user's name
 screen test:
@@ -458,11 +442,6 @@ label start:
         #play Fire.mp3 sound 
         play Fire "sound/Fire.mp3" fadein 2.0
     
-    #Timer for Puzzle
-    $ time = 10
-    $ timer_range = 10
-    $ timer_jump = "too_slow"
-    show screen countdown
 
 label puzzle:
 
@@ -541,10 +520,6 @@ label newgame:
 
     jump continue    
     ####################################Puzzle-End##########################         
-
-    #Time out
-    label too_slow:
-        "You are too slow!"
 
 
     #(4)-1. Chimera
