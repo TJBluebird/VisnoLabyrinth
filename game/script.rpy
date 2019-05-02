@@ -1,4 +1,9 @@
-﻿init:
+﻿init python:
+
+    from time import localtime, strftime
+    import time
+
+init:
 
     #define player "e-name" and will input from user
     define player = Character("[e_name]", color="#f44242")
@@ -441,6 +446,9 @@ label start:
 
         #play Fire.mp3 sound 
         play Fire "sound/Fire.mp3" fadein 2.0
+
+        # Puzzle start time put into now1
+        $ now1 = time.localtime()
     
 
 label puzzle:
@@ -476,7 +484,7 @@ label win:
     "Congratulations!"
     python:
         k.hide()
-    jump chimera
+    jump chimera_success
 
 label giveup:
 
@@ -519,10 +527,24 @@ label newgame:
         k.show()    
 
     jump continue    
-    ####################################Puzzle-End##########################         
+    ####################################Puzzle-End##########################  
+
+    #Chimera_success
+    label chimera_success:
+        scene bg Chimera with dissolve
+
+        #Puzzle finish time put into now2
+        $ now2 = time.localtime()
+        $ now3 = now2.tm_min - now1.tm_min
+
+        if now3 <= 1:
+            "It was very quick, Fantastic You gains 1 point"
+            jump chimera
+
+        else:
+            "You are too too slow, you lose 1 point"       
 
 
-    #(4)-1. Chimera
     label chimera:
         scene bg Chimera with dissolve
         centered "{size=50}{color=#f4e842}CHIMERA{/size}{/color}"
