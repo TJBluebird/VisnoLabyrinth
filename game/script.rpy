@@ -7,6 +7,21 @@
 
 init:
 
+    image mother = "images/Sick mum_re.png"   
+    image happy_mother = "images/Happy Mum.png" 
+    image sad_girl = "images/Sad Girl_re.png"    
+    image happy_girl = "images/Happy Girl.png"
+    image bones_bof = "images/Bones Bog"
+
+    image troll = "images/Troll.png"
+    image huntress = "images/Huntress.png"
+    image huntress_dark = "images/Huntress dark form"
+    image hectate_angry = "images/Angry Hectate"
+    image hectate_calm = "images/Normal Hectate"
+    image hectate_insane = "images/Hectate Crazy"
+    image minotaur = "images/Minotaur"
+    image treewitch = "images/Witch Tree"
+
     #User's point
     define user_point = 0
 
@@ -20,11 +35,13 @@ init:
     define hectate_calm = Character("Hectate_Calm", color="#bf80b2")
     define hectate_angry = Character("Hectate_Angry", color="#42f4a7")
     define hectate_insane = Character("Hectate_Insane", color="#4f3333")
-    define bones = Character("Bones", color="#fffcfc")
+    define bones = Character('', image = 'bones')
     define mermaid = Character("Mermaid", color="#f4ee42")
     define chimera = Character("Chimera", color="#f4ee42")
     define minotaur = Character("Minotaur", color="#f4ee42")
     define treewitch = Character("TreeWitch", color="#4f3333")
+
+    image side bones = "images/bones_side.png"
 
     
     
@@ -165,6 +182,7 @@ label start:
     #HOME
     scene bg Home_Inside with dissolve
     centered "{size=50}{color=#f4e842}Home{/size}{/color}"
+    #show sad_girl at left with dissolve
     "The odor of sage fills your nostrils as you enter your home. Once, the first thing you smelled would have been breakfast prepared by your mother. That’s your job now, along with all the other chores that she would have once done."
     "It’s already been a long morning. You’ve fed the chickens, collected the eggs, mucked out the stable and tended to the garden and now it’s time to check on your mother before you make breakfast."
     "You approach the bedroom door, hesitating as you always do because today might be the day you go in and find her cold to the touch. You hear a hacking cough through the door and you let out a relieved breath. Today is not the day."
@@ -173,6 +191,7 @@ label start:
     player "Good Morning Mother, are you well?"
     "You know the answer to the question without needing to ask. Her once Golden hair has gone grey. Her skin is pale and haggard. She is now so weak she cannot get out of bed."
     "Still she smiles when she sees you and beckons you closer."
+    show mother at right with dissolve
     mother "As well as I can be, dearest child."
     "The answer is the one that she gives every morning, but still you sense that something is different about this morning. For once she is not trying to hide the weakness in her voice or the shaking of her hands."
     "It’s hard for you to understand how such a strong, energetic woman could have been robbed of all her strength and become so frail in just one winter."
