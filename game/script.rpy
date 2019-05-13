@@ -43,9 +43,6 @@ init:
 
     image side bones = "images/bones_side.png"
 
-    
-    
-
     #define background images
     image bg Home = "images/bg_001.png"
     image bg Home_Inside = "images/bg_002.png"
@@ -61,7 +58,7 @@ init:
     image bg credits = "images/credits.png"
 
     define water_point = 0
-    define earth_point = 0
+    define neither_point = 0
     define blood_point = 0
 
     define crossroad_option = 0
@@ -80,6 +77,8 @@ init:
     define company_with_hectate = 0
     define chimera_skull_option = 0
     define chimera_hectate_option = 0
+    define chimera_visit = 0
+    define sirens_visit = 0
 
     #Add points when Mermaid Song Quizz failed
     define MermaidSong_fail = 0
@@ -88,9 +87,9 @@ init:
     screen imagemap:
         imagemap:
             ground "images/crossroad.png"
-            hover "images/crossroad-hover.png"  
+            hover "images/crossroad-hover.png"
             hotspot (339, 87, 390, 189) action Jump("swamp")
-            hotspot (360, 266, 376, 174) action Jump("bridge") 
+            hotspot (360, 266, 376, 174) action Jump("bridge")
 
     #Mermaid Song image define
     image movie = Movie(size=(800, 600), xpos=.5, ypos=.8)
@@ -99,53 +98,53 @@ init:
     screen imagemap2:
         imagemap:
             ground "images/MermaidSong.png"
-            hover "images/MermaidSong-hover.png"  
+            hover "images/MermaidSong-hover.png"
             hotspot (240, 35, 815, 101) action Jump("sirnes_dead")
-            hotspot (244, 155, 814, 97) action Jump("sirnes_dead") 
+            hotspot (244, 155, 814, 97) action Jump("sirnes_dead")
             hotspot ((244, 285, 815, 98)) action Jump("sirnes_dead")
-            hotspot ((238, 407, 819, 100)) action Jump("sirens3")  
+            hotspot ((238, 407, 819, 100)) action Jump("sirens3")
 
     #Clickable buttons on Sirens scene with Mermaid Song quizz
     screen imagemap_with_skull:
         imagemap:
             ground "images/MermaidSong.png"
-            hover "images/MermaidSong-hover.png"  
+            hover "images/MermaidSong-hover.png"
             hotspot (240, 35, 815, 101) action Jump("sirnes_dead")
-            hotspot (244, 155, 814, 97) action Jump("sirnes_dead") 
+            hotspot (244, 155, 814, 97) action Jump("sirnes_dead")
             hotspot ((244, 285, 815, 98)) action Jump("sirnes_dead")
-            hotspot ((238, 407, 819, 100)) action Jump("sirens_with_skull2")    
+            hotspot ((238, 407, 819, 100)) action Jump("sirens_with_skull2")
 
     #Clickable buttons on Sirens scene with Mermaid Song quizz
     screen imagemap_with_hectate:
         imagemap:
             ground "images/MermaidSong.png"
-            hover "images/MermaidSong-hover.png"  
+            hover "images/MermaidSong-hover.png"
             hotspot (240, 35, 815, 101) action Jump("sirnes_dead")
-            hotspot (244, 155, 814, 97) action Jump("sirnes_dead") 
+            hotspot (244, 155, 814, 97) action Jump("sirnes_dead")
             hotspot ((244, 285, 815, 98)) action Jump("sirnes_dead")
-            hotspot ((238, 407, 819, 100)) action Jump("sirens_with_hectate2")  
+            hotspot ((238, 407, 819, 100)) action Jump("sirens_with_hectate2")
 
     screen imagemap_with_huntress:
         imagemap:
             ground "images/MermaidSong.png"
-            hover "images/MermaidSong-hover.png"  
+            hover "images/MermaidSong-hover.png"
             hotspot (240, 35, 815, 101) action Jump("sirnes_dead")
-            hotspot (244, 155, 814, 97) action Jump("sirnes_dead") 
+            hotspot (244, 155, 814, 97) action Jump("sirnes_dead")
             hotspot ((244, 285, 815, 98)) action Jump("sirnes_dead")
-            hotspot ((238, 407, 819, 100)) action Jump("sirens_with_huntress2")          
-            
-            
+            hotspot ((238, 407, 819, 100)) action Jump("sirens_with_huntress2")
+
+
 
     python:
-        renpy.music.register_channel("Fire", mixer="sfx")  
+        renpy.music.register_channel("Fire", mixer="sfx")
         renpy.music.register_channel("outsideHome", mixer="sfx")
-        renpy.music.register_channel("crossroads", mixer="sfx")  
-        renpy.music.register_channel("bridge", mixer="sfx") 
-        renpy.music.register_channel("swamp", mixer="sfx")  
+        renpy.music.register_channel("crossroads", mixer="sfx")
+        renpy.music.register_channel("bridge", mixer="sfx")
+        renpy.music.register_channel("swamp", mixer="sfx")
         renpy.music.register_channel("entrance", mixer="sfx")
-        renpy.music.register_channel("Bull", mixer="sfx")  
-        renpy.music.register_channel("thunder", mixer="sfx")  
-        renpy.music.register_channel("waves", mixer="sfx")  
+        renpy.music.register_channel("Bull", mixer="sfx")
+        renpy.music.register_channel("thunder", mixer="sfx")
+        renpy.music.register_channel("waves", mixer="sfx")
 
 
 #Frame for input user's name
@@ -160,9 +159,9 @@ screen test:
 
 screen display_user_point:
     frame:
-        text "Your point is [user_point]" 
+        text "Points: [user_point]"
 
-      
+
 
 label start:
 
@@ -176,7 +175,7 @@ label start:
     #play background music
     play music "sound/BackgroundMusic.mp3" fadein 1.5
 
-    #play Fire.mp3 sound 
+    #play Fire.mp3 sound
     play Fire "sound/Fire.mp3" fadein 2.0
 
     #HOME
@@ -238,7 +237,7 @@ label start:
     #Garden
     scene bg Home with dissolve
 
-    #play outsideHome.mp3 sound 
+    #play outsideHome.mp3 sound
     play outsideHome "sound/outsideHome.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}Garden{/size}{/color}"
@@ -249,72 +248,49 @@ label start:
     "Trying to give yourself courage, you take a deep breath. You cannot help but notice how old the Shrine is. As a child you never questioned it, but it looks like it has stood there far longer than the house itself."
     "Worn down by countless years of wind and rain you can barely make out the depiction of three faces carved into the stone. Below them, the depiction of an old crone is less weathered. Her face deeply wrinkled, her head cowled."
     "You let out a deep sigh and berate yourself for procrastinating. If you hope to ever see your mother again, you must leave now."
-
-    ##Water ritual
     player "Lo to the Watcher, with power to see"
+    player "Lo to the Warrior, who endeth the line"
+    player "Lo to the Crone, who darkens the path"
+
+    ##Ritual
+
     menu:
         "1. You offer water":
             $ water_point = 1
             $ user_point = user_point + 1
 
-        "2. You chose not to offer water":
-            $ water_point = 2
-
-    label result_water:
-        if water_point == 1:
-            "You sprinkle a few drops of water from your flask onto the shrine. The droplets seem to fall in slow motion onto the surface and like always, appear to veer towards the three faces."
-            "No water spills onto the ground or pools in the base of the shrine. You know it is impossible, but it is like the stone absorbs the water."
-        elif water_point == 2:
-            "You are not certain how long you will need to travel to reach your Uncle’s home and you may need all the water you can carry. It seems wasteful to pour it all over the old statue. You decide it would be better to save all the water you can for your journey."
-            "You are sure that the words are more than enough to satisfy the ritual."
-
-    ##Earth ritual
-    player "Lo to the Watcher, with power to see"
-    menu:
-        "1. You offer earth":
-            $ earth_point = 1
-
-        "2. You chose not to offer earth":
-            $ earth_point = 2
-
-    label result_earth:
-        if earth_point == 1:
-            "You scoop up a handful of loose soil and scatter it across the stone. Just like the water, the grains of dirt seem to fall in slow motion. They tumble as if guided by an unseen hand and land in a neat pile at the base of the altar."
-            "The wind seems to slow and even the birds in the trees seem unwilling to make a sound. Giving your surroundings a funerary quality."
-            "A shudder passes through you as, for the first time, you realise that the pile looks remarkably like a freshly dug grave."
-        elif earth_point == 2:
-            "You feel as if this is a waste of time, much better spent if you were already on your way.  Forgoing the offering of earth, you hurriedly continue with the ceremony."
-
-    ##Blood ritual
-    player "Lo to the Crone, who darkens the path"
-    menu:
-        "1. You offer the blood":
+        "2. You offer blood":
             $ blood_point = 1
             $ user_point = user_point - 1
 
-        "2. You chose not to offer the blood":
-            $ blood_point = 2
+        "3. You offer neither":
+            $ neither_point = 1
 
-    label result_blood:
-        if blood_point == 1:
+    label result_ritual:
+        if water_point == 1:
+            player "Lo to the Three, that we may pass free"
+            "You sprinkle a few drops of water from your flask onto the shrine. The droplets seem to fall in slow motion onto the surface and like always, appear to veer towards the three faces."
+            "No water spills onto the ground or pools in the base of the shrine. You know it is impossible, but it is like the stone absorbs the water."
+            "With the end of the ceremony you are free to start your journey. You look back at your home one last time and start out."
+        elif blood_point == 1:
+            player "Lo to the Three, that we may pass free"
             "You open the door of a nearby aviary. The doves, as if knowing what is to come, shy away from your hand. You quickly capture the closest and cradle it to your chest in one hand. You carefully close and fasten the door before taking the dove to the shrine."
             player "I'm sorry."
             "You whisper and stroke the dove for a moment. Then, you take out your skinning knife and quickly end the Dove’s life, ensuring that the spilled blood lands on the shrine so that this horrible act is, at least, not wasted."
             "The blood trickles down the surface of the Shrine, seeming to flow toward the depiction of the old woman. Somehow spreading across the relief, making it appear particularly horrific."
-        elif blood_point == 2:
-            "No. You will not do it. Those poor doves have done nothing to deserve such a fate and you will have take no further part in their death. You continue on with the ceremony, inwardly smiling at the sound of the Doves cooing as if in gratitude."
-
-    ##Ritual end
-    player "Lo to the Three, that we may pass free"
-    "With the end of the ceremony you are free to start your journey. You look back at your home one last time and start out."
+            "With the end of the ceremony you are free to start your journey. You look back at your home one last time and start out."
+        elif neither_point == 1:
+            player "Lo to the Three, that we may pass free"
+            "No.  You will not do it.  This entire ritual is useless and outdated.  You see no point in watering a statue and those poor doves have done nothing to deserve such a fate."
+            "With the end of the ceremony you are free to start your journey. You look back at your home one last time and start out."
 
     #Sound outsideHome.mp3 Stop
     stop outsideHome fadeout 2.0
 
-    #play crossroads.mp3 sound 
+    #play crossroads.mp3 sound
     play crossroads "sound/crossroads.mp3" fadein 2.0
 
-    #CORSSROAD
+    #CROSSROAD
     scene bg Crossroads with dissolve
     centered "{size=50}{color=#f4e842}CROSSROAD{/size}{/color}"
     "You walk down a well travelled path toward the woods. The bright morning sun filters down through the groves of pine and oak all around you and the air is filled with birdsong leaving you feeling warm and tranquil."
@@ -336,7 +312,7 @@ label start:
 
     scene bg Bridge with dissolve
 
-    #play bridge.mp3 sound 
+    #play bridge.mp3 sound
     play bridge "sound/bridge.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}BRIDGE{/size}{/color}"
@@ -356,11 +332,11 @@ label start:
     player "........"
     player "I don't want to go back\nThe bog looked more dangerous than this silly bridge"
     "The moment you set foot on the bridge, a Troll springs out of the water, blocking your way forward."
-    player "AH~~~~~"
+    player "AHHHHHHHHH"
     troll "What's a silly billy goat like you doing on my bridge all by yourself?"
     player "I'm...I'm...I'm not alone"
     troll "You're RIGHT! Because I'm here!"
-    player "I'm with a ...hunter"
+    player "I'm with a...hunter"
     troll "No you're not my tasty treat, Ha Ha Ha!!"
     "You start to cry"
     player "I am! I am! there's a hunter! You ugly Troll!"
@@ -373,14 +349,14 @@ label start:
     if blood_point == 1:
         jump troll
 
-    if water_point ==1:
-        jump hectate
+    if water_point == 1:
+        jump hecate
 
-    #Saved from Troll by Withch in Huntress
+    #Saved from Troll by Witch in Huntress
     player "AHHHHHHHHH"
     troll "Raaaaggh - Uck!"
     "The troll’s terrifying roar is abruptly cut short with a single thunk.\nWith a look of surprise, the Troll falls forward, dead."
-    "From his back sprouts an arrow, buried deep within its thick skin.\nBehind him stands a Huntress."  
+    "From his back sprouts an arrow, buried deep within its thick skin.\nBehind him stands a Huntress."
     player "What?.."
     huntress "It's your lucky day, Sweetheart."
     huntress "Trolls like to play with their food.\nToday he choked on it."
@@ -394,21 +370,21 @@ label start:
     huntress "How serendipitous!  It so happens that I'm going north as well, I can help you find your uncle’s house."
     huntress "There are worse things in these woods than Trolls, after all."
     player "THANK YOU! You're so kind.\nI was so scared that I might meet a witch."
-    huntress "LAUGHS\nWe wouldn't want that now would we."   
+    huntress "LAUGHS\nWe wouldn't want that now would we."
      #Sound bridge.mp3 Stop
     stop bridge fadeout 2.0
     jump labyrinth_entrance_with_huntress
 
-   
+
 
 
 
 #Saved from Troll by Hectate
 ############   With Hectate      ###############################################################################
-    label hectate:
+    label hecate:
 
     #Sound bridge.mp3 Stop
-    stop bridge fadeout 2.0   
+    stop bridge fadeout 2.0
 
     "Suddenly the entire world freezes, as if time itself has stopped.\nNot a sound is heard, the trees no longer sway in the breeze.\nEven a passing bird hangs stationary mid-flight whilst overhead.\nThe troll’s charge, stopped completely, it’s arm still frozen overhead."
     "You look around, wide eyed at the impossibility of it all when at your side you spy a most unexpected sight."
@@ -432,7 +408,7 @@ label start:
     hectate_angry "Though you can hardly keep calling us Watcher throughout this whole mess, do not believe for a second that you can!"
     player "Then...then what should I call you?"
     "Just as quickly, the head spins so that the smiling face is once again turned towards you."
-    hectate_calm "We have gone by many names child. The Watcher is but one. Night-mother by some, The Fates by others." 
+    hectate_calm "We have gone by many names child. The Watcher is but one. Night-mother by some, The Fates by others."
     hectate_calm "The Wheel-weaver or Webspinner, the Taker of Light or Daughter of Moon. Endonia, Artemis, Selene or Hera. All are part true, all are part lies.  All are we.  You, child, will call us…"
     hectate_insane "Frank!"
     "The head spins to show you the laughing face, having finally deigned to pay some attention."
@@ -455,11 +431,11 @@ label start:
 
 
     #jump labyrinth_entrance_with_hectate
-    scene bg Labyrinth with dissolve  
-    #play entrance.mp3 sound 
+    scene bg Labyrinth with dissolve
+    #play entrance.mp3 sound
     play entrance "sound/entrance.mp3" fadein 2.0
-    centered "{size=50}{color=#f4e842}Labyrinth Entrance With Hectate{/size}{/color}" 
-   
+    centered "{size=50}{color=#f4e842}Labyrinth Entrance With Hectate{/size}{/color}"
+
     jump junction_with_hectate
 
     #JUNCTION
@@ -513,7 +489,7 @@ label start:
     label chimera_with_hectate:
         scene bg Chimera with dissolve
 
-        #play Fire.mp3 sound 
+        #play Fire.mp3 sound
         play Fire "sound/Fire.mp3" fadein 2.0
 
         "Upon entering the room, the first thing that registers on your mind is the smell. The second thing that registers is your attempt not to gag, due primarily to the first thing."
@@ -538,24 +514,14 @@ label start:
         chimera "Yes, we hear that a lot"
         player "You can call me [e_name], I’d prefer not to be called a ‘morsel'"
         chimera "But it shall soon be the truth"
-
-        menu:
-            "1. Beg for your life":
-                $ chimera_hectate_option = 1
-
-            "2. Ask for assistance":
-                $ chimera_hectate_option = 2
-                $ user_point = user_point - 1
-
-            "3. Argument":
-                $ chimera_hectate_option = 3
-                $ user_point = user_point + 1
+        $ chimera_visit = 1
+        jump chimera_puzzle
 
     label chimera_with_hectate_result:
-        if chimera_hectate_option == 1:   
+        if chimera_hectate_option == 1:
             jump DoNotEatMe
 
-        elif chimera_hectate_option == 2:   
+        elif chimera_hectate_option == 2:
             jump Assistance_hectate
 
         elif chimera_hectate_option == 3:
@@ -564,14 +530,14 @@ label start:
     label Assistance_hectate:
         "Fearing your life is soon to be at an end, you bow your head and pray with all your heart for help."
         player "Lo to the watcher, with.."
-        hectate_angry "Power to see, we get it"
+        hectate_angry "Yes yes.  Power to see, we get it"
         "The figure of Hecate is immediately right beside you though at no point had you noticed any intervening movement."
         hectate_angry "You know the thing about being a watcher?!"
         hectate_angry "The idea is to ‘watch’.  In other words, not to have to intervene any time you get in trouble!"
         player "But, I think I’m about to die?"
         hectate_calm "Very much in keeping with the idea behind a ‘test’ child.  To see how ‘you’ handle adversity"
         hectate_insane "And even if you die, why not just resurrect?"
-        player "I can’t, I’m mortal"    
+        player "I can’t, I’m mortal"
         hectate_insane "“Oh, that’s what that means?  That’s stupid.  You should be immortal, it’s lots more fun!"
         player "“I’ll think about it.  In the meantime, can you do something about this Chimera?"
         hectate_insane "“Hmm?  Oh fine, if you insist"
@@ -579,13 +545,13 @@ label start:
         "Blinded, you raise your hands in an attempt to shield your eyes but to no avail."
         "After what seems like an eternity, the light subsides and you vision slowly returns. Looking around you find Hecate has disappeared but more importantly, so is the Chimera!"
         "Finally, alone you proceed forth through the opposite door."
-        jump chimera_puzzle
-                
 
-    
+
+
+
 
 ############   With Hectate      ##################################################
-    
+
 
 
 
@@ -597,7 +563,7 @@ label start:
     #LABYRINTH ENTRANCE with Huntress -> Hectate
     label labyrinth_entrance_with_huntress:
     scene bg Labyrinth with dissolve
-    #play entrance.mp3 sound 
+    #play entrance.mp3 sound
     play entrance "sound/entrance.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}Labyrinth Entrance with Huntress{/size}{/color}"
@@ -613,7 +579,7 @@ label start:
     player "Where I can't see it"
     "You look around to try spot a cottage but can't see anything."
     player "Is it"
-    "Elaheh is disappeared."
+    "Elaheh has disappeared."
     player "Elaheh! Elaheh!\nElaheh! Elaheh!"
     "You can't spot Elaheh but you can hear faintly laughter being carried by the breeze."
     player "Elaheh!"
@@ -638,7 +604,7 @@ label start:
     hectate_angry "I have many faces I must be a demon"
     hectate_calm "No! I'm the god of your religion"
     player "The Nightmother"
-    player "The wheel spinner"
+    player "The Wheel Spinner"
     player "Hecate you've answered my prayers"
     hectate_calm "The gods provide no answers child"
     hectate_calm "We only pave paths"
@@ -667,12 +633,12 @@ label start:
     label chimera_puzzle:
         scene bg Chimera with dissolve
 
-        #play Fire.mp3 sound 
+        #play Fire.mp3 sound
         play Fire "sound/Fire.mp3" fadein 2.0
 
         # Puzzle start time put into now1
-        $ now1 = time.localtime()
-    
+        $ start_time = time.time()
+
 
 label puzzle:
 
@@ -682,18 +648,18 @@ label puzzle:
         k.show()
 
 label quick_continue:
-    
+
     while True:
 
         python:
-        
+
             ui.textbutton("Give Up", ui.jumps("giveup"), xalign=.02, yalign=.98)
             k.set_sensitive(True)
             event = k.interact()
 
             if event:
                 renpy.checkpoint()
-            
+
             k.set_sensitive(False)
         # e "[event]"
         if event == "win":
@@ -703,7 +669,7 @@ label quick_continue:
 label win:
 
     "Finished!"
-    
+
     "Congratulations!"
     python:
         k.hide()
@@ -712,17 +678,14 @@ label win:
 label giveup:
 
     $ k.set_sensitive(False)
-    
+
     menu:
         "Are you sure you want to give up?"
 
         "Yes":
-            scene bg credits with dissolve
-            centered "{size=50}{color=#f4e842}END{/size}{/color}"
-            return
             python:
                 k.hide()
-            jump chimera
+            jump DoNotEatMe
 
         "No":
             python:
@@ -731,27 +694,26 @@ label giveup:
 
 label newgame:
 
-    menu:    
+    menu:
         "Would you like to try again?"
 
         "Yes":
             pass
 
         "No":
-            "Well, I hope to see you again soon."
-            jump chimera
+            jump DoNotEatMe
 
     "Okay, here we go!"
-    
+
     scene bg table
 
     python:
         k = Puzzle()
         k.sensitive = False
-        k.show()    
+        k.show()
 
-    jump continue    
-####################################Puzzle-End##########################  
+    jump continue
+####################################Puzzle-End##########################
 
 
 
@@ -763,32 +725,36 @@ label newgame:
         scene bg Chimera with dissolve
 
         #Puzzle finish time put into now2
-        $ now2 = time.localtime()
-        $ now3 = now2.tm_min - now1.tm_min
+        $ elapsed_time = time.time() - start_time
         stop Fire fadeout 2.0
 
-        if now3 <= 1 and company_with_skull == 1 :
-            $ user_point = user_point + 1
-            "It was very quick, Fantastic You gain 1 point"
-            jump sirens_with_skull
+        if elapsed_time <= 60 and company_with_skull == 1 :
+            $ user_point = user_point - 1
+            $ chimera_skull_option = 3
+            "You took [elapsed_time] seconds"
+            "That was very quick!  However Bones had no opportunity to help, you lose 1 point"
+            jump chimera_with_skull_result
 
         elif company_with_skull == 1:
-            $ user_point = user_point - 1
-            "You are too too slow, you lose 1 point"  
-            jump sirens_with_skull
-
-        elif now3 <= 1 and company_with_hectate == 1 : 
             $ user_point = user_point + 1
-            "It was very quick, Fantastic You gain 1 point"
-            jump sirens_with_hectate
+            $ chimera_skull_option = 2
+            "You took [elapsed_time] seconds"
+            "You are too slow!  However Bones now has the opportunity to help, you gain 1 point"
+            jump chimera_with_skull_result
+
+        elif elapsed_time <= 60 and company_with_hectate == 1 :
+            $ user_point = user_point + 1
+            $ chimera_hectate_option = 3
+            "You took [elapsed_time] seconds"
+            "That was very quick! Hecate is impressed, you gain 1 point"
+            jump chimera_with_hectate_result
 
         elif company_with_hectate == 1:
             $ user_point = user_point - 1
-            "You are too too slow, you lose 1 point"  
-            jump sirens_with_hectate   
-
-
-
+            $ chimera_hectate_option = 2
+            "You took [elapsed_time] seconds"
+            "You are too slow, As Hecate must now help you, you lose 1 point"
+            jump chimera_with_hectate_result
 
 
     #(5)-1. Minotaur
@@ -796,7 +762,7 @@ label newgame:
 
         scene bg Minotaur with dissolve
 
-        #play Bull.mp3 sound 
+        #play Bull.mp3 sound
         play Bull "sound/Bull.mp3" fadein 2.0
 
         centered "{size=50}{color=#f4e842}MINOTAUR{/size}{/color}"
@@ -857,7 +823,7 @@ label newgame:
             $ minotaur_option = 1
             $ user_point = user_point + 1
 
-        "2. Here for a rest and a further choice":
+        "2. I'm only here for a rest!":
             $ minotaur_option = 2
             $ user_point = user_point - 1
 
@@ -958,7 +924,7 @@ label newgame:
     label witch:
         scene bg Witch with dissolve
 
-        #play thunder.mp3 sound 
+        #play thunder.mp3 sound
         play thunder "sound/thunder.mp3" fadein 2.0
 
         centered "{size=50}{color=#f4e842}WITCH{/size}{/color}"
@@ -969,7 +935,7 @@ label newgame:
 
 
         #Sound thunder.mp3 Stop
-        stop thunder fadeout 2.0 
+        stop thunder fadeout 2.0
 
     label final_dicision:
         if (company_with_hectate == 1 and user_point >= 4):
@@ -979,23 +945,23 @@ label newgame:
             jump neutral_ending_with_hectate
 
         elif (company_with_hectate == 1 and user_point < 0):
-            jump bad_ending_with_hectate          
+            jump bad_ending_with_hectate
 
         elif (company_with_skull == 1 and user_point >= 4):
-            jump good_ending_with_skull  
+            jump good_ending_with_skull
 
         elif (company_with_skull == 1 and user_point <= 3 and user_point >=0):
-            jump neutral_ending_with_skull 
+            jump neutral_ending_with_skull
 
         elif (company_with_hectate == 1 and user_point < 0):
-            jump bad_ending_with_skull    
+            jump bad_ending_with_skull
 
         else:
             scene bg credits with dissolve
             centered "{size=50}{color=#f4e842}END{/size}{/color}"
-            return     
+            return
 
-   
+
     label good_ending_with_hectate:
         centered "{size=50}{color=#f4e842}GOOD ENDING with Hectate{/size}{/color}"
         treewitch "GIRL"
@@ -1066,7 +1032,7 @@ label newgame:
         "As there is nothing else for it, you set off to see your uncle."
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
-        return    
+        return
 
     label bad_ending_with_hectate:
         centered "{size=50}{color=#f4e842}BAD ENDING with Hectate{/size}{/color}"
@@ -1115,9 +1081,9 @@ label newgame:
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
 
-        return    
+        return
 
-    
+
     label good_ending_with_skull:
         centered "{size=50}{color=#f4e842}GOOD ENDING with Bones{/size}{/color}"
         treewitch "GIRL"
@@ -1212,7 +1178,7 @@ label newgame:
         "While you are sad that Bones’ ‘life’ has ended, there is nothing else for it, you set off to see your uncle."
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
-        return    
+        return
 
     label bad_ending_with_skull:
         centered "{size=50}{color=#f4e842}BAD ENDING with Bones{/size}{/color}"
@@ -1257,8 +1223,8 @@ label newgame:
         huntress "Okay..but first I want you to help me"
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
-        return    
-    
+        return
+
 
 
 
@@ -1266,7 +1232,7 @@ label newgame:
     label sirens_with_hectate:
         scene bg Sirens with dissolve
 
-        #play waves.mp3 sound 
+        #play waves.mp3 sound
         play waves "sound/waves.mp3" fadein 2.0
 
         centered "{size=50}{color=#f4e842}SIRENS with Hectate{/size}{/color}"
@@ -1294,7 +1260,7 @@ label newgame:
         mermaid "Hop in the water and come get it"
 
         menu:
-            "1. Are you going to swim?":
+            "1. You decide to swim":
                 $ sirens_option_with_hectate = 1
 
             "2. You are not going to swim":
@@ -1314,7 +1280,7 @@ label newgame:
                 player "Is there anything else I can do"
                 mermaid "You liked our singing?"
                 player "Very much"
-                mermaid "I'll sing the notes and solve the quiz."      
+                mermaid "I'll sing the notes and solve the quiz."
 
 
         #Background music temporarily stop
@@ -1322,7 +1288,7 @@ label newgame:
 
         #Sound waves.mp3 Stop
         stop waves fadeout 2.0
-         
+
         #Mermaid Song Quizz Start#############################################################
         "Listen and watch carefully Mermaid song video"
 
@@ -1337,7 +1303,7 @@ label newgame:
         #Play background music again
         play music "sound/BackgroundMusic.mp3" fadein 1.5
 
-        #play waves.mp3 sound 
+        #play waves.mp3 sound
         play waves "sound/waves.mp3" fadein 2.0
 
         #Call Options for Mermaid Song Quizz
@@ -1345,8 +1311,8 @@ label newgame:
 
         #When user has right answer
         label sirens_with_hectate2:
-        $ user_point = user_point + 1    
-        mermaid "That was beautiful!" 
+        $ user_point = user_point + 1
+        mermaid "That was beautiful!"
         mermaid "I'll get you the boat"
         player "Thanks"
         mermaid "Just to stop you singing"
@@ -1367,9 +1333,9 @@ label newgame:
         #Sound waves.mp3 Stop
         stop waves fadeout 2.0
 
-        jump minotaur
+        jump monster_visit_check
 
-    
+
 
 
     #(2)-2.swamp
@@ -1377,7 +1343,7 @@ label newgame:
 
     scene bg Swamp with dissolve
 
-    #play swamp.mp3 sound 
+    #play swamp.mp3 sound
     play swamp "sound/swamp.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
@@ -1389,10 +1355,10 @@ label newgame:
     bones "Try living here sweetheart! It's a dry biscuit I can assure you."
     "The skeleton laying half-submerged in the bog turns it’s head and you swear, though it has no eyelids, that it just winked at you."
 
-    player "AH~~~~~~~"
-    bones "AH~~~~~~~"
-    player "AH~~~~~~~"
-    bones "AH~~~~~~~ Screaming is fun!"
+    player "AHHHHHHHHH"
+    bones "AHHHHHHHHH"
+    player "AHHHHHHHHH"
+    bones "AHHHHHHHHH Screaming is fun!"
 
     "You turn to run."
 
@@ -1414,7 +1380,7 @@ label newgame:
     bones "no, no, no, no, no, no Oh gods no. Please don't leave me here like this."
     player "I'm sorry but I'm on my way to see my uncle, my mother is sick and I need to tell him"
     player "Plus mother told me not to talk to strangers AND I don't think I can help you"
-    bones "Firstly, I'm not a stranger, I like to think we're friends, best friends, I'm your best friend Bones. What you see is what you get, no skeletons in my closet!" 
+    bones "Firstly, I'm not a stranger, I like to think we're friends, best friends, I'm your best friend Bones. What you see is what you get, no skeletons in my closet!"
     "Bones tries to smile. Unsuccessfully."
     player "I'm truly"
     bones "Secondly, please there is a part two"
@@ -1470,13 +1436,13 @@ label newgame:
     player "Sorry, uhm, Bones"
     bones "Geez.. no I'm sorry uh"
     player "[e_name]"
-    bones "YES, insert name, I was getting there"
+    bones "YES, [e_name], I was getting there"
 
 
      #LABYRINTH ENTRANCE
     label labyrinth_entrance_with_skull:
     scene bg Labyrinth with dissolve
-    #play entrance.mp3 sound 
+    #play entrance.mp3 sound
     play entrance "sound/entrance.mp3" fadein 2.0
     centered "{size=50}{color=#f4e842}Labyrinth Entrance with Bones{/size}{/color}"
     "You've been walking for what feels like forever. The forest feels like it’s crowding in around you on all sides, funneling you always forward."
@@ -1568,14 +1534,14 @@ label newgame:
         if junction_option_with_skull == 1:
             jump chimera_with_skull
 
-        elif junction_option_with_skull == 2:  
-            jump sirens_with_skull        
+        elif junction_option_with_skull == 2:
+            jump sirens_with_skull
 
     label chimera_with_skull:
         scene bg Chimera with dissolve
         centered "{size=50}{color=#f4e842}Chimera with Bones{/size}{/color}"
 
-        #play Fire.mp3 sound 
+        #play Fire.mp3 sound
         play Fire "sound/Fire.mp3" fadein 2.0
         "Upon entering the room, the first thing that registers on your mind is the smell. The second thing that registers is your attempt not to gag, due primarily to the first thing."
         "Your nostrils are assaulted by the stench of what must be a combination of rotting flesh and rancid food. The ratios between them varying with each breath to make new and noxious combinations."
@@ -1602,24 +1568,13 @@ label newgame:
         chimera "Yes, we hear that a lot"
         player "You can call me [e_name], I’d prefer not to be called a ‘morsel'"
         chimera "But it shall soon be the truth"
-
-        menu:
-            "1. Beg for your life":
-                $ chimera_skull_option = 1
-
-            "2. Ask for assistance":
-                $ chimera_skull_option = 2
-                $ user_point = user_point - 1
-
-            "3. Argument":
-                $ chimera_skull_option = 3
-                $ user_point = user_point + 1
+        $ chimera_visit = 1
 
     label chimera_with_skull_result:
-        if chimera_skull_option == 1:   
+        if chimera_skull_option == 1:
             jump DoNotEatMe
 
-        elif chimera_skull_option == 2:   
+        elif chimera_skull_option == 2:
             jump Assistance
 
         elif chimera_skull_option == 3:
@@ -1641,7 +1596,7 @@ label newgame:
 
         label Assistance:
             player "“Uh...little help Bones?!"
-            bones "Yeah yeah\nHelp me Old Bones Kenobi, you’re my only hope"    
+            bones "Yeah yeah\nHelp me Old Bones Kenobi, you’re my only hope"
             player "What?"
             bones "You wouldn’t understand."
             "Turning to address the Chimera, Bones addresses him in a manner to which you suspect he is unaccustomed."
@@ -1667,9 +1622,9 @@ label newgame:
             "And with that, the beast leaves.  The last you see as it slips through the door is the snake, winking before departing."
             player "How did you come up with that so quickly?"
             bones "Trust me, I was in that swamp for a long time. I know a little about boredom and aimlessness"
-            jump chimera_puzzle
+            jump monster_visit_check
 
-        label Argument:  
+        label Argument:
             player "But why?"
             chimera "Why will I eat you?  Why else but to sate my hunger"
             "The Chimera begins to advance on you, the lion’s growl and the snakes hiss growing louder."
@@ -1698,7 +1653,7 @@ label newgame:
             "The lion and snake heads look at each other, uncertain"
             player "Are you both truly satisfied with your current existence?  Not seeking out prey, but having in trickle down to you from the outside. An existence devoid of any skill, any challenge or any meaning"
             player "Surely you cannot possibly be"
-            chimera "What would you have us do"        
+            chimera "What would you have us do?"
             player "Leave!  Go forth and seek out your own meaning in life, your own reason to exist!"
             "Pausing, for what seems to you an infinitely long time, the Chimera ponders your words."
             "A bead of sweat forms on your brown and begins to trail down, so fearful you are that you will end up sharing your fate with those surrounding you."
@@ -1706,14 +1661,13 @@ label newgame:
             chimera "[e_name]you are indeed wise for your years.  We will take on board your words and do this thing.  We will go forth and see what awaits outside in the larger world"
             "You smile and nod at the creature, not wanting to say anything further for fear you will inadvertently change its mind."
             "As the Chimera begins to leave from the same door you emerged, it pauses."
-            chimera "Thank you [e_name] for helping us see that there is more to life than this"  
+            chimera "Thank you [e_name] for helping us see that there is more to life than this"
             "And with that, it is gone and you breathe a gigantic sigh of relief.  You have no doubt that this encounter could have gone very differently."
             "Looking around, you have no further wish to stay with the dead, and leave via the opposite door wondering what else you could possibly meet."
-            jump chimera_puzzle
+            jump monster_visit_check
 
 
-
-    ###############################With SKull###################### 
+    ###############################With SKull######################
 
 
 
@@ -1779,16 +1733,16 @@ label newgame:
         huntress "Elaheh"
         player "Thank you Elaheh"
         huntress "Oh it's my pleasure"
-        
+
         jump labyrinth_entrance_with_huntress
 
     #(4)-2.Sirens
     label sirens_with_skull:
         scene bg Sirens with dissolve
-        #play waves.mp3 sound 
+        #play waves.mp3 sound
         play waves "sound/waves.mp3" fadein 2.0
         centered "{size=50}{color=#f4e842}SIRENS with Bones{/size}{/color}"
-        "You choose the Right path, you aren’t sure exactly why, maybe the path seems a little less claustrophobic and you’re ready for a little space to breathe."
+        "You choose the right path, you aren’t sure exactly why, maybe the path seems a little less claustrophobic and you’re ready for a little space to breathe."
         "You also think you can hear a song on the breeze in that direction."
         "You follow the winding path for some time, the song getting slowly louder and louder as you go. Finally, the path opens out to reveal a large body of water"
         "Three mermaids sit on rocks."
@@ -1819,8 +1773,10 @@ label newgame:
         mermaid "It's not deep"
         mermaid "You can almost stand at the deepest point"
         bones "Don't listen to these sardine brains"
+        $ sirens_visit = 1
+
         menu:
-            "1. Are you going to swim?":
+            "1. You decide to swim":
                 $ sirens_option_with_skull = 1
 
             "2. You are not going to swim":
@@ -1863,7 +1819,7 @@ label newgame:
         #Play background music again
         play music "sound/BackgroundMusic.mp3" fadein 1.5
 
-        #play waves.mp3 sound 
+        #play waves.mp3 sound
         play waves "sound/waves.mp3" fadein 2.0
 
         #Call Options for Mermaid Song Quizz
@@ -1872,40 +1828,44 @@ label newgame:
         #When user has right answer
     label sirens_with_skull2:
         $ user_point = user_point + 1
-        mermaid "That was beautiful!" 
+        mermaid "That was beautiful!"
         mermaid "Here is your boat and take this too"
         mermaid "To think I was going to eat you"
-        player "You we're going to eat me!"
+        player "You we're going to eat me?!"
         bones "I told you"
         bones "Swim with scales and tell no tells"
         player "Well- thanks for not eating me"
-        player "And the piece of...coin"
-        bones "Have you got a licence plate as well"
-        bones "Give your sea garbage to someone else"
-        player "BONES.BE.QUITE"
         "You get on the boat with Bones and sail across the lake safely."
 
         #Sound waves.mp3 Stop
         stop waves fadeout 2.0
 
-        jump minotaur
+        jump monster_visit_check
 
-
-
-    
-
+    # Checks to see if other monster has been visited yet
+    label monster_visit_check:
+        if chimera_visit == 0 and company_with_hectate == 1:
+            jump chimera_with_hectate
+        elif chimera_visit == 0 and company_with_skull == 1:
+            jump chimera_with_skull
+        elif sirens_visit == 0 and company_with_hectate == 1:
+            jump sirens_with_hectate
+        elif sirens_visit == 0 and company_with_skull == 1:
+            jump sirens_with_skull
+        else:
+            jump minotaur
 
     #(3)-1. Troll
     label troll:
-        "Because you selected blood offering."
-        "Troll eats you."
+        "Selecting the blood offering has successfully hidden you from the witch's sight, however as a result nobody has come to help you."
+        "The Troll eats you."
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
         return
 
     label sirnes_dead:
-        "Your answer is wrong."  
-        "You are drowned"  
+        "Your answer is wrong."
+        "You are drowned"
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
         return
