@@ -63,6 +63,8 @@ init:
     define company_with_hectate = 0
     define chimera_skull_option = 0
     define chimera_hectate_option = 0
+    define chimera_visit = 0
+    define sirens_visit = 0
 
     #Add points when Mermaid Song Quizz failed
     define MermaidSong_fail = 0
@@ -272,7 +274,7 @@ label start:
     #play crossroads.mp3 sound
     play crossroads "sound/crossroads.mp3" fadein 2.0
 
-    #CORSSROAD
+    #CROSSROAD
     scene bg Crossroads with dissolve
     centered "{size=50}{color=#f4e842}CROSSROAD{/size}{/color}"
     "You walk down a well travelled path toward the woods. The bright morning sun filters down through the groves of pine and oak all around you and the air is filled with birdsong leaving you feeling warm and tranquil."
@@ -496,18 +498,8 @@ label start:
         chimera "Yes, we hear that a lot"
         player "You can call me [e_name], I’d prefer not to be called a ‘morsel'"
         chimera "But it shall soon be the truth"
-
-        menu:
-            "1. Beg for your life":
-                $ chimera_hectate_option = 1
-
-            "2. Ask for assistance":
-                $ chimera_hectate_option = 2
-                $ user_point = user_point - 1
-
-            "3. Argument":
-                $ chimera_hectate_option = 3
-                $ user_point = user_point + 1
+        $ chimera_visit = 1
+        jump chimera_puzzle
 
     label chimera_with_hectate_result:
         if chimera_hectate_option == 1:
@@ -522,7 +514,7 @@ label start:
     label Assistance_hectate:
         "Fearing your life is soon to be at an end, you bow your head and pray with all your heart for help."
         player "Lo to the watcher, with.."
-        hectate_angry "Power to see, we get it"
+        hectate_angry "Yes yes.  Power to see, we get it"
         "The figure of Hecate is immediately right beside you though at no point had you noticed any intervening movement."
         hectate_angry "You know the thing about being a watcher?!"
         hectate_angry "The idea is to ‘watch’.  In other words, not to have to intervene any time you get in trouble!"
@@ -537,7 +529,7 @@ label start:
         "Blinded, you raise your hands in an attempt to shield your eyes but to no avail."
         "After what seems like an eternity, the light subsides and you vision slowly returns. Looking around you find Hecate has disappeared but more importantly, so is the Chimera!"
         "Finally, alone you proceed forth through the opposite door."
-        jump chimera_puzzle
+
 
 
 
@@ -629,7 +621,7 @@ label start:
         play Fire "sound/Fire.mp3" fadein 2.0
 
         # Puzzle start time put into now1
-        $ now1 = time.localtime()
+        $ start_time = time.time()
 
 
 label puzzle:
@@ -675,12 +667,9 @@ label giveup:
         "Are you sure you want to give up?"
 
         "Yes":
-            scene bg credits with dissolve
-            centered "{size=50}{color=#f4e842}END{/size}{/color}"
-            return
             python:
                 k.hide()
-            jump chimera
+            jump DoNotEatMe
 
         "No":
             python:
@@ -696,8 +685,7 @@ label newgame:
             pass
 
         "No":
-            "Well, I hope to see you again soon."
-            jump chimera
+            jump DoNotEatMe
 
     "Okay, here we go!"
 
@@ -721,32 +709,36 @@ label newgame:
         scene bg Chimera with dissolve
 
         #Puzzle finish time put into now2
-        $ now2 = time.localtime()
-        $ now3 = now2.tm_min - now1.tm_min
+        $ elapsed_time = time.time() - start_time
         stop Fire fadeout 2.0
 
-        if now3 <= 1 and company_with_skull == 1 :
-            $ user_point = user_point + 1
-            "It was very quick, Fantastic You gain 1 point"
-            jump sirens_with_skull
+        if elapsed_time <= 60 and company_with_skull == 1 :
+            $ user_point = user_point - 1
+            $ chimera_skull_option = 3
+            "You took [elapsed_time] seconds"
+            "That was very quick!  However Bones had no opportunity to help, you lose 1 point"
+            jump chimera_with_skull_result
 
         elif company_with_skull == 1:
-            $ user_point = user_point - 1
-            "You are too too slow, you lose 1 point"
-            jump sirens_with_skull
-
-        elif now3 <= 1 and company_with_hectate == 1 :
             $ user_point = user_point + 1
-            "It was very quick, Fantastic You gain 1 point"
-            jump sirens_with_hectate
+            $ chimera_skull_option = 2
+            "You took [elapsed_time] seconds"
+            "You are too slow!  However Bones now has the opportunity to help, you gain 1 point"
+            jump chimera_with_skull_result
+
+        elif elapsed_time <= 60 and company_with_hectate == 1 :
+            $ user_point = user_point + 1
+            $ chimera_hectate_option = 3
+            "You took [elapsed_time] seconds"
+            "That was very quick! Hecate is impressed, you gain 1 point"
+            jump chimera_with_hectate_result
 
         elif company_with_hectate == 1:
             $ user_point = user_point - 1
-            "You are too too slow, you lose 1 point"
-            jump sirens_with_hectate
-
-
-
+            $ chimera_hectate_option = 2
+            "You took [elapsed_time] seconds"
+            "You are too slow, As Hecate must now help you, you lose 1 point"
+            jump chimera_with_hectate_result
 
 
     #(5)-1. Minotaur
@@ -815,7 +807,7 @@ label newgame:
             $ minotaur_option = 1
             $ user_point = user_point + 1
 
-        "2. Here for a rest and a further choice":
+        "2. I'm only here for a rest!":
             $ minotaur_option = 2
             $ user_point = user_point - 1
 
@@ -1252,7 +1244,7 @@ label newgame:
         mermaid "Hop in the water and come get it"
 
         menu:
-            "1. Are you going to swim?":
+            "1. You decide to swim":
                 $ sirens_option_with_hectate = 1
 
             "2. You are not going to swim":
@@ -1325,7 +1317,7 @@ label newgame:
         #Sound waves.mp3 Stop
         stop waves fadeout 2.0
 
-        jump minotaur
+        jump monster_visit_check
 
 
 
@@ -1347,10 +1339,10 @@ label newgame:
     bones "Try living here sweetheart! It's a dry biscuit I can assure you."
     "The skeleton laying half-submerged in the bog turns it’s head and you swear, though it has no eyelids, that it just winked at you."
 
-    player "AH~~~~~~~"
-    bones "AH~~~~~~~"
-    player "AH~~~~~~~"
-    bones "AH~~~~~~~ Screaming is fun!"
+    player "AHHHHHHHHH"
+    bones "AHHHHHHHHH"
+    player "AHHHHHHHHH"
+    bones "AHHHHHHHHH Screaming is fun!"
 
     "You turn to run."
 
@@ -1560,18 +1552,7 @@ label newgame:
         chimera "Yes, we hear that a lot"
         player "You can call me [e_name], I’d prefer not to be called a ‘morsel'"
         chimera "But it shall soon be the truth"
-
-        menu:
-            "1. Beg for your life":
-                $ chimera_skull_option = 1
-
-            "2. Ask for assistance":
-                $ chimera_skull_option = 2
-                $ user_point = user_point - 1
-
-            "3. Argument":
-                $ chimera_skull_option = 3
-                $ user_point = user_point + 1
+        $ chimera_visit = 1
 
     label chimera_with_skull_result:
         if chimera_skull_option == 1:
@@ -1625,7 +1606,7 @@ label newgame:
             "And with that, the beast leaves.  The last you see as it slips through the door is the snake, winking before departing."
             player "How did you come up with that so quickly?"
             bones "Trust me, I was in that swamp for a long time. I know a little about boredom and aimlessness"
-            jump chimera_puzzle
+            jump monster_visit_check
 
         label Argument:
             player "But why?"
@@ -1656,7 +1637,7 @@ label newgame:
             "The lion and snake heads look at each other, uncertain"
             player "Are you both truly satisfied with your current existence?  Not seeking out prey, but having in trickle down to you from the outside. An existence devoid of any skill, any challenge or any meaning"
             player "Surely you cannot possibly be"
-            chimera "What would you have us do"
+            chimera "What would you have us do?"
             player "Leave!  Go forth and seek out your own meaning in life, your own reason to exist!"
             "Pausing, for what seems to you an infinitely long time, the Chimera ponders your words."
             "A bead of sweat forms on your brown and begins to trail down, so fearful you are that you will end up sharing your fate with those surrounding you."
@@ -1667,8 +1648,7 @@ label newgame:
             chimera "Thank you [e_name] for helping us see that there is more to life than this"
             "And with that, it is gone and you breathe a gigantic sigh of relief.  You have no doubt that this encounter could have gone very differently."
             "Looking around, you have no further wish to stay with the dead, and leave via the opposite door wondering what else you could possibly meet."
-            jump chimera_puzzle
-
+            jump monster_visit_check
 
 
     ###############################With SKull######################
@@ -1746,7 +1726,7 @@ label newgame:
         #play waves.mp3 sound
         play waves "sound/waves.mp3" fadein 2.0
         centered "{size=50}{color=#f4e842}SIRENS with Bones{/size}{/color}"
-        "You choose the Right path, you aren’t sure exactly why, maybe the path seems a little less claustrophobic and you’re ready for a little space to breathe."
+        "You choose the right path, you aren’t sure exactly why, maybe the path seems a little less claustrophobic and you’re ready for a little space to breathe."
         "You also think you can hear a song on the breeze in that direction."
         "You follow the winding path for some time, the song getting slowly louder and louder as you go. Finally, the path opens out to reveal a large body of water"
         "Three mermaids sit on rocks."
@@ -1777,8 +1757,10 @@ label newgame:
         mermaid "It's not deep"
         mermaid "You can almost stand at the deepest point"
         bones "Don't listen to these sardine brains"
+        $ sirens_visit = 1
+
         menu:
-            "1. Are you going to swim?":
+            "1. You decide to swim":
                 $ sirens_option_with_skull = 1
 
             "2. You are not going to swim":
@@ -1833,30 +1815,34 @@ label newgame:
         mermaid "That was beautiful!"
         mermaid "Here is your boat and take this too"
         mermaid "To think I was going to eat you"
-        player "You we're going to eat me!"
+        player "You we're going to eat me?!"
         bones "I told you"
         bones "Swim with scales and tell no tells"
         player "Well- thanks for not eating me"
-        player "And the piece of...coin"
-        bones "Have you got a licence plate as well"
-        bones "Give your sea garbage to someone else"
-        player "BONES.BE.QUITE"
         "You get on the boat with Bones and sail across the lake safely."
 
         #Sound waves.mp3 Stop
         stop waves fadeout 2.0
 
-        jump minotaur
+        jump monster_visit_check
 
-
-
-
-
+    # Checks to see if other monster has been visited yet
+    label monster_visit_check:
+        if chimera_visit == 0 and company_with_hectate == 1:
+            jump chimera_with_hectate
+        elif chimera_visit == 0 and company_with_skull == 1:
+            jump chimera_with_skull
+        elif sirens_visit == 0 and company_with_hectate == 1:
+            jump sirens_with_hectate
+        elif sirens_visit == 0 and company_with_skull == 1:
+            jump sirens_with_skull
+        else:
+            jump minotaur
 
     #(3)-1. Troll
     label troll:
-        "Because you selected blood offering."
-        "Troll eats you."
+        "Selecting the blood offering has successfully hidden you from the witch's sight, however as a result nobody has come to help you."
+        "The Troll eats you."
         scene bg credits with dissolve
         centered "{size=50}{color=#f4e842}END{/size}{/color}"
         return
