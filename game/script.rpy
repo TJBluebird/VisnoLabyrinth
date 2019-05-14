@@ -7,9 +7,9 @@
 
 init:
 
-    image mother = "images/Sick mum_re.png"   
-    image happy_mother = "images/Happy Mum.png" 
-    image sad_girl = "images/Sad Girl_re.png"    
+    image mother = "images/Sick mum_re.png"
+    image happy_mother = "images/Happy Mum.png"
+    image sad_girl = "images/Sad Girl_re.png"
     image happy_girl = "images/Happy Girl.png"
     image bones_bof = "images/Bones Bog"
 
@@ -1312,6 +1312,7 @@ label newgame:
         #When user has right answer
         label sirens_with_hectate2:
         $ user_point = user_point + 1
+        $ sirens_visit = 1
         mermaid "That was beautiful!"
         mermaid "I'll get you the boat"
         player "Thanks"
