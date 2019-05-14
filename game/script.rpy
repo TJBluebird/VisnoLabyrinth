@@ -1570,6 +1570,7 @@ label newgame:
         player "You can call me [e_name], I’d prefer not to be called a ‘morsel'"
         chimera "But it shall soon be the truth"
         $ chimera_visit = 1
+        jump chimera_puzzle
 
     label chimera_with_skull_result:
         if chimera_skull_option == 1:
