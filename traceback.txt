@@ -1,42 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After loading the script.
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+Executing ATL code at game/script.rpy:122
+  File "game/script.rpy", line 2056, in script
+    show huntress at huntress_meet_huntress1
+TypeError: zip argument #1 must support iteration
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/bootstrap.py", line 313, in bootstrap
-    renpy.main.main()
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/main.py", line 415, in main
-    if renpy.parser.report_parse_errors():
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/parser.py", line 2787, in report_parse_errors
-    renpy.display.error.report_parse_errors(full_text, error_fn)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/error.py", line 187, in report_parse_errors
-    error_fn=error_fn,
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/game.py", line 281, in invoke_in_new_context
-    return callable(*args, **kwargs)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/error.py", line 45, in call_exception_screen
-    return renpy.ui.interact(mouse="screen", type="screen", suppress_overlay=True, suppress_underlay=True)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/ui.py", line 289, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/core.py", line 2672, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/core.py", line 3350, in interact_core
-    self.quit_event()
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/core.py", line 2376, in quit_event
-    renpy.exports.take_screenshot()
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/exports.py", line 1599, in take_screenshot
-    renpy.game.interface.take_screenshot(scale, background=background)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/core.py", line 2122, in take_screenshot
-    surf = renpy.display.scale.smoothscale(surf, scale)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/scale.py", line 95, in real_smoothscale
-    dest = pgrender.surface_unscaled(size, src)
-  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/pgrender.py", line 118, in surface
-    surf = Surface((width + 4, height + 4), 0, sample)
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+  File "game/script.rpy", line 2056, in script
+    show huntress at huntress_meet_huntress1
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/ast.py", line 1150, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/ast.py", line 1120, in show_imspec
+    atl=atl)
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/exports.py", line 709, in show
+    sls.add(layer, img, key, zorder, behind, at_list=at_list, name=name, atl=atl, default_transform=default_transform, transient=transient)
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/core.py", line 1068, in add
+    thing._show()
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/transform.py", line 1048, in _show
+    super(ATLTransform, self)._show()
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/transform.py", line 1014, in _show
+    self.update_state()
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/display/transform.py", line 1036, in update_state
+    fr = self.execute(self, self.st, self.at)
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/atl.py", line 556, in execute
+    action, arg, pause = block.execute(trans, timebase, self.atl_state, events)
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/atl.py", line 763, in execute
+    action, arg, pause = stmt.execute(trans, target - start, child_state, events)
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/atl.py", line 1222, in execute
+    value = interpolate(complete, old, new, PROPERTIES[k])
+  File "/Users/davidhan/Documents/renpy-7.1.3-sdk/renpy/atl.py", line 162, in interpolate
+    return tuple(interpolate(t, i, j, ty) for i, j, ty in zip(a, b, type))
+TypeError: zip argument #1 must support iteration
 
 Darwin-18.0.0-x86_64-i386-64bit
 Ren'Py 7.1.3.1092
- 
-Mon May 13 12:53:27 2019
+Labyrinth 1.0
+Wed May 15 13:09:21 2019

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 171: end of line expected.
-    show sad_girl with moveinleft with dissolve
-                                  ^
+File "game/script.rpy", line 124: expected ':' not found.
+    transform girl_meet_huntress1
+                                 ^
 
 Ren'Py Version: Ren'Py 7.1.3.1092
-Mon May 13 12:53:21 2019
+Wed May 15 13:06:26 2019

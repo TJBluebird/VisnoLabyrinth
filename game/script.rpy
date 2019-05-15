@@ -7,21 +7,148 @@
 
 init:
 
-    image mother = "images/Sick mum_re.png"
-    image happy_mother = "images/Happy Mum.png"
-    image sad_girl = "images/Sad Girl_re.png"
-    image happy_girl = "images/Happy Girl.png"
-    image bones_bof = "images/Bones Bog"
+    transform to_right:
+        xalign 0.5
+        linear 0.5 xalign 1.0
 
-    image troll = "images/Troll.png"
-    image huntress = "images/Huntress.png"
-    image huntress_dark = "images/Huntress dark form"
-    image hectate_angry = "images/Angry Hectate"
-    image hectate_calm = "images/Normal Hectate"
-    image hectate_insane = "images/Hectate Crazy"
-    image minotaur = "images/Minotaur"
-    image treewitch = "images/Witch Tree"
+    transform to_left:
+        xalign 0.5
+        linear 0.5 xalign 0.0   
 
+    transform to_center:
+        xalign 0.0
+        linear 0.5 xalign 0.3   
+
+    transform hectate_bridge1:
+        xalign 0.5
+        linear 3.0 xalign 0.25  
+
+    transform hectate_bridge2:
+        alpha 0.1 xalign 0.5
+        linear 3.0 alpha 1.0 xalign 0.4    
+
+    transform hectate_bridge3:
+        xalign 0.4   
+
+    transform hectate_bridge4:
+        xalign 0.4
+        linear 3.0 xalign 0.8 
+
+    transform troll_bridge1:
+        alpha 1.0 xalign 1.0
+        linear 3.0 alpha 0.0 xalign 1.0 
+
+    transform huntress_bridge:
+        alpha 0.0 xalign 1.3
+        linear 1.5 alpha 1.0 xalign 1.0  
+
+    transform chimera_chimera1:
+        alpha 0.0 xalign 1.3 
+        linear 3.0 alpha 1.0 xalign 1.0
+
+    transform chimera_chimera2:
+        align (1.0, 0.0)
+        linear 3.0 align (0.5, 1.0)
+
+    transform hectate_chimera1:
+        xalign 0.5
+        linear 3.0 xalign 0.25  
+
+    transform hectate_chimera2:
+        xalign 2.5    
+
+    define flash = Fade(0.1, 3.0, 0.5, color="fff")   
+
+    transform hectate_sirens1:
+        xalign 0.5
+        linear 2.0 xalign 0.25  
+
+    transform hectate_sirens2:
+        xalign 0.25      
+
+    transform minotaur_minotaur1:
+        xzoom -1.0
+        xalign 1.3
+        linear 1.0 xalign 1.0    
+
+    transform minotaur_minotaur2:
+        xzoom -1.0
+        xalign 1.0
+        linear 1.0 xalign 0.5     
+
+    transform minotaur_minotaur3:
+        xzoom -1.0
+        xalign 0.5
+        linear 1.0 xalign 1.0    
+
+    transform girl_minotaur1:
+        align(0.0, 0.0)
+        linear 0.1 align(-0.1, -1.0) 
+        linear 0.1 align(-0.2, 1.0)
+
+    transform girl_minotaur_attack1:
+        align(-0.2, 1.0)
+        linear 1.0 align(-0.2, -5.0) 
+        linear 1.0 align(1.0, -5.0) 
+        linear 1.0 align(1.0, 1.0)
+        linear 1.0 align(0.0, 1.0)   
+
+    transform minotaur_minotaur_attack1:
+        xzoom -1.0
+        align(1.0, 1.0)
+        linear 1.0 align(-0.2, -5.0) 
+        linear 1.0 align(1.0, -5.0) 
+        linear 1.0 align(1.0, 1.0)
+        linear 1.0 align(0.3, 1.0)  
+
+    transform minotaur_minotaur_attack2:
+        xzoom -1.0
+        align(0.3, 1.0)
+        linear 3.5 align (0.3, 45.0)
+
+    transform stone_minotaur_attack1:
+        align(0.3, -1.0)
+        linear 3.5 align (0.3, 1.0)     
+
+    transform huntress_mediocre_ending1:
+        xalign 1.0
+        linear 2.0 xalign 0.5   
+
+    transform hectate_witch1:
+        xalign 0.1      
+
+    transform huntress_meet_huntress1:
+        align (1.0, 5.0)
+        linear 1.0 yalign (1.0, 0.0)
+
+    transform girl_meet_huntress1:
+        align (0.5, 0.0)
+        linear 1.0 align(0.0, 0.0)          
+
+
+    image sick_mother = "images/character/sick_mother_resize.png"
+    image happy_mother = "images/character/Happy Mum.png"
+
+    image angry_girl = "images/character/angry_girl_resize.png"
+    image sad_girl = "images/character/sad_girl_resize.png"
+    image happy_girl = "images/character/happy_girl_resize.png"
+
+    image mermaids = "images/character/mermaids_resize.png"
+    image chimera = "images/character/chimera_resize.png"
+    image troll = "images/character/troll_resize.png"
+    image huntress = "images/character/huntress_resize.png"
+    image hectate_angry = "images/character/hectate_angry_resize.png"
+    image hectate_calm = "images/character/hectate_calm_resize.png"
+    image hectate_insane = "images/character/hectate_insane_resize.png"
+    image minotaur = "images/character/minotaur_resize.png"
+    image treewitch = "images/character/witchtree_resize.png"
+
+    image side bones = "images/character/bones_side.png"
+    image huntress_dark = "images/character/huntress_dark_resize.png"
+    image bones_bog = "images/character/bones_bog.png"
+
+    image stone = "images/character/stone.png"
+    image bones = "images/character/bones.png"
     #User's point
     define user_point = 0
 
@@ -32,16 +159,15 @@ init:
     define mother = Character("Mother", color="#f4ee42")
     define troll = Character("Troll", color="#f4ee42")
     define huntress = Character("Huntress", color="#567756")
-    define hectate_calm = Character("Hectate_Calm", color="#bf80b2")
-    define hectate_angry = Character("Hectate_Angry", color="#42f4a7")
-    define hectate_insane = Character("Hectate_Insane", color="#4f3333")
+    define hectate_calm = Character("Hecate_Calm", color="#bf80b2")
+    define hectate_angry = Character("Hecate_Angry", color="#42f4a7")
+    define hectate_insane = Character("Hecate_Insane", color="#4f3333")
     define bones = Character('', image = 'bones')
+    define bones_bog = Character('bones', color="#f4ee42")
     define mermaid = Character("Mermaid", color="#f4ee42")
     define chimera = Character("Chimera", color="#f4ee42")
     define minotaur = Character("Minotaur", color="#f4ee42")
     define treewitch = Character("TreeWitch", color="#4f3333")
-
-    image side bones = "images/bones_side.png"
 
     #define background images
     image bg Home = "images/bg_001.png"
@@ -181,7 +307,7 @@ label start:
     #HOME
     scene bg Home_Inside with dissolve
     centered "{size=50}{color=#f4e842}Home{/size}{/color}"
-    #show sad_girl at left with dissolve
+    show sad_girl at center with dissolve
     "The odor of sage fills your nostrils as you enter your home. Once, the first thing you smelled would have been breakfast prepared by your mother. That’s your job now, along with all the other chores that she would have once done."
     "It’s already been a long morning. You’ve fed the chickens, collected the eggs, mucked out the stable and tended to the garden and now it’s time to check on your mother before you make breakfast."
     "You approach the bedroom door, hesitating as you always do because today might be the day you go in and find her cold to the touch. You hear a hacking cough through the door and you let out a relieved breath. Today is not the day."
@@ -190,11 +316,13 @@ label start:
     player "Good Morning Mother, are you well?"
     "You know the answer to the question without needing to ask. Her once Golden hair has gone grey. Her skin is pale and haggard. She is now so weak she cannot get out of bed."
     "Still she smiles when she sees you and beckons you closer."
-    show mother at right with dissolve
+    show sad_girl at to_left
+    show sick_mother at right with dissolve
     mother "As well as I can be, dearest child."
     "The answer is the one that she gives every morning, but still you sense that something is different about this morning. For once she is not trying to hide the weakness in her voice or the shaking of her hands."
     "It’s hard for you to understand how such a strong, energetic woman could have been robbed of all her strength and become so frail in just one winter."
     mother "Listen to me closely"
+    show sad_girl at to_center 
     "Her voice pulls you out of your thoughts. She takes your hand and draws you closer to her, the intensity of her gaze causes a knot of fear to form in your stomach."
     mother "You know as well as I do that I am not much longer for this world"
     "Your stomach drops and grief fills you. You have been worried about it for some time, but to hear her say the words aloud makes them so much more real. You shake your head and start to deny her words."
@@ -202,8 +330,6 @@ label start:
     player "Yes, Mother"
     "You drop your head so she can’t see the tears in your eyes."
     mother "I have a task that I need you to perform before I depart.  You must visit your uncle and bring him to me.  Your father’s brother has always been a fine and capable man, and visited often before your father passed away, though you may be too young to remember"
-
-    centered "{color=#024eff}What's your decision?{/color}"
 
     #(1)Branch: Leave or stay?
     menu:
@@ -241,6 +367,7 @@ label start:
     play outsideHome "sound/outsideHome.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}Garden{/size}{/color}"
+    show sad_girl_resize at left with dissolve
     "You go into the Garden do do as your Mother wishes. Filled with a sudden sense of dread, you look around yourself, trying to take it all in like it is the last time you will ever see it."
     "It is a modest home, small by most standards, but you love it dearly. It was built entirely by your Father before he passed. You smile when you remember how proud the timbered roof had made him."
     "Your eyes fall on the Shrine nestled against the outer wall of the house and you need to fight down a feeling of revulsion. You know that the purpose of the Shrine is to hide the house from view of those that lurk in the woods and to protect the family from any evil that they might do."
@@ -319,6 +446,7 @@ label start:
     "You come to a clearing in the forest and can see a well-kept bridge that crosses over a river."
     "The bank on either side is bright and green, almost like a perfectly manicured garden."
     "You breathe a sigh of relief. This was the right choice. It looks so much less scary than the swamp."
+    show happy_girl_resize at left with dissolve
     player "I'm so glad I didn't go that way, I would've ended up lost in some bog for sure"
     "As you come closer to the bridge, you see that the water swirls fiercely beneath the stone arches of the bridge and tears at the banks, taking chunks of earth with it as it rushes downstream."
     "There isn't a living thing in sight.\nNo birds.\nNo butterflies.\nOnly the hiss of water.\n"
@@ -331,6 +459,9 @@ label start:
     player "hmmmm\nThe bridge looks safe\nI’m sure the water is moving far too fast for anything to be hiding underneath."
     player "........"
     player "I don't want to go back\nThe bog looked more dangerous than this silly bridge"
+    hide happy_girl_resize
+    show angry_girl_resize at left
+    show troll_resize at right with dissolve
     "The moment you set foot on the bridge, a Troll springs out of the water, blocking your way forward."
     player "AHHHHHHHHH"
     troll "What's a silly billy goat like you doing on my bridge all by yourself?"
@@ -355,7 +486,11 @@ label start:
     #Saved from Troll by Witch in Huntress
     player "AHHHHHHHHH"
     troll "Raaaaggh - Uck!"
+    show huntress_resize at huntress_bridge
+    hide troll_resize with wipedown
     "The troll’s terrifying roar is abruptly cut short with a single thunk.\nWith a look of surprise, the Troll falls forward, dead."
+    
+     
     "From his back sprouts an arrow, buried deep within its thick skin.\nBehind him stands a Huntress."
     player "What?.."
     huntress "It's your lucky day, Sweetheart."
@@ -388,6 +523,7 @@ label start:
 
     "Suddenly the entire world freezes, as if time itself has stopped.\nNot a sound is heard, the trees no longer sway in the breeze.\nEven a passing bird hangs stationary mid-flight whilst overhead.\nThe troll’s charge, stopped completely, it’s arm still frozen overhead."
     "You look around, wide eyed at the impossibility of it all when at your side you spy a most unexpected sight."
+    show hectate_calm_resize at hectate_bridge2 
     "Immediately beside you stands a woman in a diaphanous robe of flowing red silk, cinched at the waist with a belt of the same material."
     "In her right hand she holds a lit torch, though its flame provides no light.\nIn her left she holds a dagger, not in a threatening manner but pointed upward."
     "Her stance and posture reminds you of a statue, though this may be because but for her robe, slowly billowing in the complete absence of any breeze, she has been completely immobile, as if inanimate."
@@ -405,16 +541,26 @@ label start:
     "You manage to stammer, your mind feeling sluggish at the shock of it all."
     hectate_calm "Indeed, that is are name given to us by some, though like us, it is one amongst many"
     "The faces turn so that the scowling expression is turned toward you."
+    hide hectate_calm_resize
+    show hectate_angry_resize at hectate_bridge3
     hectate_angry "Though you can hardly keep calling us Watcher throughout this whole mess, do not believe for a second that you can!"
     player "Then...then what should I call you?"
     "Just as quickly, the head spins so that the smiling face is once again turned towards you."
+    hide hectate_angry_resize
+    show hectate_calm_resize at hectate_bridge3
     hectate_calm "We have gone by many names child. The Watcher is but one. Night-mother by some, The Fates by others."
     hectate_calm "The Wheel-weaver or Webspinner, the Taker of Light or Daughter of Moon. Endonia, Artemis, Selene or Hera. All are part true, all are part lies.  All are we.  You, child, will call us…"
+    hide hectate_calm_resize
+    show hectate_insane_resize at hectate_bridge3
     hectate_insane "Frank!"
     "The head spins to show you the laughing face, having finally deigned to pay some attention."
     hectate_insane "You should call us Frank!"
     "The head spins back to the first, and with a sigh and a roll of her eyes"
+    hide hectate_insane_resize
+    show hectate_angry_resize at hectate_bridge3
     hectate_angry "No!"
+    hide hectate_angry_resize
+    show hectate_calm_resize at hectate_bridge3
     hectate_calm "Hecate...call us Hecate"
     player "But, how did I summon you? Surely a little water could not do this?"
     "Hearing laughter from the oddly jovial face, you fear you may have said something foolish."
@@ -425,7 +571,10 @@ label start:
     player "Test me with what?"
     "The first face towards you again, it's knowing smile now back.\nIt says nothing further, instead the torch in Hecate’s hand flashes and you both disappear."
     "Time resumes in the surrounding scene. The troll, now free to move but alone stops short in its charge.\nConfused that you appear to have simply vanished it scratches its head and mutters "
+    show hectate_calm_resize at hectate_bridge4 
+    show troll_resize at troll_bridge1 
     troll "Huh?"
+    
     hectate_calm "Trolls are nasty beasts"
     player "Wow!"
 
@@ -442,27 +591,49 @@ label start:
     label junction_with_hectate:
     scene bg Junction with dissolve
     centered "{size=50}{color=#f4e842}Junction with Hectate{/size}{/color}"
+    show angry_girl_resize at left with dissolve
+    show hectate_angry_resize at right with dissolve
     player "Hmm, two paths."
     hectate_angry "Hmm you have- Two eye balls apparently!\nGods! We can see what you see."
     hectate_angry "Why do you say everything out loud\nIt's like you're trying to provide exposition for someone.\n "
+    hide hectate_angry_resize
+    show hectate_insane_resize at right
     hectate_insane "[e_name] stared at the three faces feeling a sense of sadness."
     hectate_insane "Uncertainty was in the air."
+    hide hectate_insane_resize
+    show hectate_angry_resize at right
     hectate_angry "What am I doing."
+    hide hectate_angry_resize
+    show hectate_insane_resize at right
     hectate_insane "Providing exposition."
+    hide hectate_insane_resize
+    show hectate_angry_resize at right
     hectate_angry "Well its annoying."
+    hide hectate_angry_resize
+    show hectate_insane_resize at right
     hectate_insane "Well its fun."
     hectate_insane "Hecate feels annoyed yet amused at the SAME time."
     player "Which way should I go Hecate?"
     hectate_calm "Which path do you wish to take."
     player "The one that lets me leave this maze."
+    hide hectate_insane_resize
+    show hectate_calm_resize at right
     hectate_calm "That path lies within."
+    hide hectate_calm_resize
+    show hectate_insane_resize at right
     hectate_insane "I'm not actually a goddess."
     hectate_insane "My true form is a fortune cookie."
     hectate_insane "Ambiguous and delicious."
     player "I demand to hear a suggested path from all three of your faces."
+    hide hectate_insane_resize
+    show hectate_angry_resize at right
     hectate_angry "Watch it [e_name]!"
     hectate_angry "Do not demand to ask anything from me.\nYou're lucky I can be kind\nYou don't want to see my fury."
+    hide hectate_angry_resize
+    show hectate_insane_resize at right
     hectate_insane "Remember Atlantis oh oh and Pompeii"
+    hide hectate_insane_resize
+    show hectate_calm_resize at right
     hectate_calm "We pave the paths but you choose which of them to walk."
     player "Sorry my Goddess I don't wish to disrespect you."
     hectate_calm "Be mindful little one.\nTo disrespect me is to disregard your life\n"
@@ -492,6 +663,7 @@ label start:
         #play Fire.mp3 sound
         play Fire "sound/Fire.mp3" fadein 2.0
 
+        show angry_girl_resize at left with dissolve
         "Upon entering the room, the first thing that registers on your mind is the smell. The second thing that registers is your attempt not to gag, due primarily to the first thing."
         "Your nostrils are assaulted by the stench of what must be a combination of rotting flesh and rancid food. The ratios between them varying with each breath to make new and noxious combinations."
         player "Eugh...! What is that?!"
@@ -502,7 +674,10 @@ label start:
         "Disconcertingly, almost all of these appear to be missing parts, an arm here, a leg there. Almost as if they are being eaten."
         player "Bad...Very bad...Very bad room"
         "As if alerted by the sound of your voice, you begin to hear a low growl emanating from the surrounding shadows."
+        show chimera_resize at chimera_chimera1
         "An instinctual fear grips your heart as you see, stepping into the light, the face of a lion gradually emerge into view. It’s growl now not just heard but felt and you can’t help but back away."
+        hide chimera_resize
+        show chimera_resize at chimera_chimera2
         "As the lion continues stepping forward you notice not not all is as it seems. The lion’s tail, as it emerges from the darkness does not seem ordinary."
         "Suddenly, your entire field of vision is encompassed by a large pair of fangs. The lion’s tail, you now realise, is not a tail at all but large snake!"
         "Its jaws snap shut, right in front of your face having reached the limit of its length, and withdraws with a hiss, staring watchful as it hovers over the lion’s head."
@@ -528,9 +703,16 @@ label start:
             jump Argument
 
     label Assistance_hectate:
+        show angry_girl_resize at left with dissolve
+        show chimera at right with dissolve
         "Fearing your life is soon to be at an end, you bow your head and pray with all your heart for help."
         player "Lo to the watcher, with.."
+        show hectate_angry_resize at center with dissolve
         hectate_angry "Yes yes.  Power to see, we get it"
+        hide hectate_angry_resize
+        show hectate_angry_resize at hectate_chimera1
+        hide angry_girl_resize
+        show angry_girl_resize at left
         "The figure of Hecate is immediately right beside you though at no point had you noticed any intervening movement."
         hectate_angry "You know the thing about being a watcher?!"
         hectate_angry "The idea is to ‘watch’.  In other words, not to have to intervene any time you get in trouble!"
@@ -542,9 +724,13 @@ label start:
         player "“I’ll think about it.  In the meantime, can you do something about this Chimera?"
         hectate_insane "“Hmm?  Oh fine, if you insist"
         "In fits of giggles, Hecate stares at the Chimera and it appears to you that the the entire world is suddenly bathed in the purest white light."
+        scene bg Chimera with flash
+        pause
         "Blinded, you raise your hands in an attempt to shield your eyes but to no avail."
+        show angry_girl_resize at center with dissolve
         "After what seems like an eternity, the light subsides and you vision slowly returns. Looking around you find Hecate has disappeared but more importantly, so is the Chimera!"
         "Finally, alone you proceed forth through the opposite door."
+        jump monster_visit_check
 
 
 
@@ -567,6 +753,8 @@ label start:
     play entrance "sound/entrance.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}Labyrinth Entrance with Huntress{/size}{/color}"
+    show angry_girl_resize at left with dissolve
+    show huntress_resize at right with dissolve
     "You've been walking for so long that you feel like you should've already arrived at your uncle’s house."
     "While being with the huntress, Elaheh, you've passed many strange things. Glowing eyes follow your every move. You finally come to a stop at a giant stone archway topped with the sigil of Ouroburos."
     "The snake eating its own tail."
@@ -579,6 +767,7 @@ label start:
     player "Where I can't see it"
     "You look around to try spot a cottage but can't see anything."
     player "Is it"
+    hide huntress_resize with dissolve
     "Elaheh has disappeared."
     player "Elaheh! Elaheh!\nElaheh! Elaheh!"
     "You can't spot Elaheh but you can hear faintly laughter being carried by the breeze."
@@ -591,6 +780,7 @@ label start:
     player "I was saved from a Troll only to get lost"
     player "Just my luck!"
 
+    show hectate_insane_resize at center with dissolve
     "You spin around and see a woman standing just a few feet away. She wears a thin, translucent gown of red silk, cinched at the waist with a belt made of the same material."
     "In her right hand she holds a lit torch, though its flame seems to give off no light. In her left hand she holds a dagger pointed upward."
     "If not for her robe billowing softly, despite the complete absence of breeze, you might have believed she was a statue."
@@ -601,7 +791,11 @@ label start:
     player "Wow!"
     player "What are you?"
     hectate_insane "I have wings, so I must be a chicken"
+    hide hectate_insane_resize
+    show hectate_angry_resize at center
     hectate_angry "I have many faces I must be a demon"
+    hide hectate_angry_resize
+    show hectate_calm_resize at center
     hectate_calm "No! I'm the god of your religion"
     player "The Nightmother"
     player "The Wheel Spinner"
@@ -611,15 +805,31 @@ label start:
     hectate_calm "You alone decide where to walk"
     player "Will you help me out of this place?"
     hectate_calm "That depends on the path you walk"
+    hide hectate_calm_resize
+    show hectate_angry_resize at center
     hectate_angry "Some paths go off cliffs"
+    hide hectate_angry_resize
+    show hectate_insane_resize at center
     hectate_insane "Some paths have cracks....bum cracks!"
+    hide hectate_insane_resize
+    show hectate_calm_resize at center
     hectate_calm "Only one path will provide you what you want"
     player "I want the path that shows me the exit"
+    hide hectate_calm_resize
+    show hectate_angry_resize at center
     hectate_angry "Well you won't find that path standing still!"
+    hide hectate_angry_resize
+    show hectate_calm_resize at center
     hectate_calm "Come child we shall guide you"
     hectate_calm "You will find your path"
+    hide hectate_calm_resize
+    show hectate_insane_resize at center
     hectate_insane "We're off to see the WIZARD the wonderful wizard of...wherever we are"
+    hide hectate_insane_resize
+    show hectate_angry_resize at center
     hectate_angry "We're not off to find a wizard fool"
+    hide hectate_angry_resize
+    show hectate_calm_resize at center
     hectate_calm "No...not a wizard\nWitch"
     jump junction_with_hectate
 ############################# With Huntress -> Hectate ##################################################
@@ -774,22 +984,40 @@ label newgame:
         "Torches mounted on walls bathing the grandiose display in warm and soothing light."
         "All manner of colours are represented in the scene, from gold framed seats to green and blue rugs...all but the colour red you cannot help but notice and are unsure as to why."
         "You contemplate the risks involved with laying down in what appears to be a particularly comfortable bed."
+        show angry_girl_resize at left with dissolve
         player "Maybe this is just for me to have a rest? Maybe there’s no horrible monster in this room?"
+        hide angry_girl_resize
+        show angry_girl_resize at left with vpunch
         "Stomp"
         "The entire room seems to shake."
         player "Why did I say it? Why did I have to say it?"
+        hide angry_girl_resize
+        show angry_girl_resize at left with vpunch
         "Stomp"
         "A booming thud echoes through your skull, and whatever it is, it is getting closer"
+        hide angry_girl_resize
+        show angry_girl_resize at left with vpunch
         "Stomp"
+        hide angry_girl_resize
+        show angry_girl_resize at left with vpunch
         "Stomp"
+        hide angry_girl_resize
+        show angry_girl_resize at left with vpunch
         "Stomp"
+        hide angry_girl_resize
+        show angry_girl_resize at left with vpunch
         "From the room beyond, you spy an enormous beast emerging from a tunnel opposite you. Despite the large size of the tunnel, the creature still needs to bend down so that it may fit through."
+        show minotaur at minotaur_minotaur1 with vpunch
         "With the head of a particularly large bull, the creatures torso resembles that of an extremely muscular man."
         "This ends however with its, also muscular, legs jointed in the reverse of that seen in a human, ending in a pair of cloven hoofs."
         "In its powerful arms it carries the biggest battleaxe you have ever seen, one side looking incredibly sharp and the other ending in a particularly vicious looking spike."
         player "Uh oh"
+        hide minotaur
+        show minotaur at minotaur_minotaur2 with vpunch
         "The creature, focusing its gaze upon you, appears to be sizing you up. You suspect, from the sight of its oversized biceps that you would not last long in any form of combat."
         "The creature, having now cleared the tunnel simply stands passively. Appearing to wait to see what you will do"
+        hide minotaur
+        show minotaur at minotaur_minotaur3
         player "Uh, hello there, giant...cow?"
         "It snorts angrily, apparently unhappy with being called a cow."
         minotaur "You ‘ere for the apple then?"
@@ -877,8 +1105,12 @@ label newgame:
         minotaur "What?"
         player "Just, can you stop? I’m only here to rest, this all looks amazingly comfortable."
         minotaur "Not for you!"
+        hide minotaur
+        show minotaur at minotaur_minotaur2 with vpunch
         "The Minotaur advances and begins to swing its axe."
         "Now no longer mere test swings, you feel the breeze from displaced air as the razored edge passes mere millimeters from your head."
+        hide angry_girl_resize
+        show angry_girl_resize at girl_minotaur1
         "You jump backwards in an attempt to gain some distance but the beast keeps up the pressure, forcing you to dive to the side as the axe head crashes down right where you were standing just a second earlier."
         "Now enraged, the Minotaur’s attacks become more erratic. The axe head smashing chairs and creating deep gouges on the previously pristine furniture."
         "With a roar, the creature bow drops it’s head and drops down on all fours, his back leg scraping backward in an effort to gain purchase."
@@ -898,9 +1130,14 @@ label newgame:
     label minotaur_attack_result:
         if minotaur_attack_option == 1:
             "With an idea of what is about to happen, you get ready to jump to the side in an effort to dodge."
+            hide angry_girl_resize
+            show angry_girl_resize at girl_minotaur_attack1
+            hide minotaur
+            show minotaur_resize at minotaur_minotaur_attack1
             "As expected, the beast charges more quickly than a creature of this size has any right to. It however, appears to have expected your dodging attempt and adjusts its path accordingly."
             "Unfortunately, having committed to dodging you cannot help but jump right into its path and the Minotaur barrels directly into you."
             "Your only saving grace is that the impact was too fast for you to be able to feel your demise."
+            hide angry_girl_resize with wipedown
             "END"
             scene bg credits with dissolve
             centered "{size=50}{color=#f4e842}END{/size}{/color}"
@@ -909,12 +1146,35 @@ label newgame:
         elif minotaur_attack_option == 2:
             "With an idea of what is about to happen, you have an idea that the Minotaur would most likely be used to having its targets try to jump aside."
             "Summoning all your bravery, you make yourself appear to get ready to jump."
+            hide angry_girl_resize
+            show angry_girl_resize at girl_minotaur_attack1
+            hide minotaur
+            show minotaur_resize at minotaur_minotaur_attack1
             "As expected, the beast charges more quickly than a creature of this size has any right to, you are however resolved to follow through with your plan."
             "Falling for your feint, the Minotaur adjusts its charge towards where it believes you will soon be."
             "You however simply stand your ground and close your eyes, hoping against hope."
             "You soon hear an almighty crash, feeling the vibrations through the floor and fearing the entire room has come down around you, you open your eyes."
+            hide angry_girl_resize
+            show angry_girl_resize at left with vpunch 
+            hide angry_girl_resize
+            show angry_girl_resize at left with hpunch
+            hide angry_girl_resize
+            show angry_girl_resize at left with vpunch
+            hide angry_girl_resize
+            show angry_girl_resize at left with hpunch
+            hide angry_girl_resize
+            show angry_girl_resize at left with vpunch 
+            hide angry_girl_resize
+            show angry_girl_resize at left with hpunch
+            hide angry_girl_resize
+            show angry_girl_resize at left with vpunch
+            hide angry_girl_resize
+            show angry_girl_resize at left with hpunch
             "Behind you the stone wall appears cracked and broken as if hit with tremendous force."
             "Lodged within appears the Minotaurs body slumped against the rubble, head still wedged within the stone."
+            hide minotaur_resize
+            show minotaur_resize at minotaur_minotaur_attack2
+            show stone at stone_minotaur_attack1
             "Breathing a sigh of relief at having bested the creature as if by pure luck."
             player "It didn’t have to end this way..."
             "You shake you head and head off towards the tunnel at the opposite end of the room"
@@ -928,6 +1188,7 @@ label newgame:
         play thunder "sound/thunder.mp3" fadein 2.0
 
         centered "{size=50}{color=#f4e842}WITCH{/size}{/color}"
+        show angry_girl_resize at left with dissolve
         "After contesting with the mermaids, chimera and minotaur you fear that the worst is still not behind you."
         "You've entered into a dark valley. Everything in this area has a rotten appearance, the flowers and vines have thorns and the sky is black with clouds."
         "In the centre of the valley stands a tree with a twisted monster in its centre."
@@ -944,7 +1205,7 @@ label newgame:
         elif (company_with_hectate == 1 and user_point <= 3 and user_point >=0):
             jump neutral_ending_with_hectate
 
-        elif (company_with_hectate == 1 and user_point < 0):
+        elif (company_with_hectate == 1 and user_point < 3):
             jump bad_ending_with_hectate
 
         elif (company_with_skull == 1 and user_point >= 4):
@@ -964,17 +1225,28 @@ label newgame:
 
     label good_ending_with_hectate:
         centered "{size=50}{color=#f4e842}GOOD ENDING with Hectate{/size}{/color}"
+        show treewitch at right with dissolve
         treewitch "GIRL"
         treewitch "[e_name]"
         treewitch "You dare approach ME?!"
-        player "Bones, what is this thing"
+        player "What is this thing"
+        hide treewitch
+        show huntress_dark at huntress_mediocre_ending1
+        show treewitch at right
         "A beautiful huntress appears, walking towards you from behind the tree."
         huntress "That THING is MY essence"
         huntress "That THING is more powerful than any GOD"
         huntress "This form, MY huntress form, is merely a shade"
         huntress "A shade of THIS"
         huntress "I've watched you through the trees\nFelt you with my roots\nYou're NOTHING but FOOD for my spirit"
+        show hectate_angry at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_angry "Your magic has become foul\nGuard your tongue Elaheh"
+        hide hectate_angry
+        show hectate_calm at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_calm "You may be powerful, but don't presume to compare yourself to me"
         hectate_calm "To me, you are as an insect and I shall not suffer the insult that you would delude yourself otherwise"
         hectate_calm "Had I wished you to die; your shade, your life tree, all that you are would burn"
@@ -1004,23 +1276,42 @@ label newgame:
 
     label neutral_ending_with_hectate:
         centered "{size=50}{color=#f4e842}MEDIOCRE ENDING with Hectate{/size}{/color}"
+        show treewitch at right with dissolve
         treewitch "GIRL"
         treewitch "[e_name]"
         treewitch "You dare approach ME?!"
-        player "Bones, what is this thing"
+        player "What is this thing"
+        hide treewitch
+        show huntress_dark at huntress_mediocre_ending1
+        show treewitch at right
         "A beautiful huntress appears, walking towards you from behind the tree."
         huntress "That THING is MY essence"
         huntress "That THING is more powerful than any GOD"
         huntress "This form, MY huntress form, is merely a shade"
         huntress "A shade of THIS"
         huntress "I've watched you through the trees\nFelt you with my roots\nYou're NOTHING but FOOD for my spirit"
+        show hectate_angry at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_angry "Your magic has become foul\nGuard your tongue Elaheh"
+        hide hectate_angry
+        show hectate_calm at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_calm "You may be powerful, but don't presume to compare yourself to me"
         hectate_calm "To me, you are as an insect and I shall not suffer the insult that you would delude yourself otherwise"
         hectate_calm "Had I wished you to die; your shade, your life tree, all that you are would burn"
+        hide hectate_calm
+        show hectate_angry at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_angry "And you shall"
         treewitch "-demonic screech-"
         huntress "LIAR! You yet require a disciple. And only I have the power required."
+        hide hectate_angry
+        show hectate_calm at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_calm "And one day I may have one, though not today"
         "And with that, Hecate glares at the witch and huntress. Immediately, the pair begin to burn, as if immolated from within. With screams of agony, the huntress and the entire tree, including the apple are reduced to nothing but piles of ash."
         player "But...my mother?"
@@ -1036,18 +1327,29 @@ label newgame:
 
     label bad_ending_with_hectate:
         centered "{size=50}{color=#f4e842}BAD ENDING with Hectate{/size}{/color}"
+        show treewitch at right with dissolve
         treewitch "GIRL"
         treewitch "[e_name]"
         treewitch "You dare approach ME?!"
-        player "Bones, what is this thing"
+        player "What is this thing"
+        hide treewitch
+        show huntress_dark at huntress_mediocre_ending1
+        show treewitch at right
         "A beautiful huntress appears, walking towards you from behind the tree."
         huntress "That THING is MY essence"
         huntress "That THING is more powerful than any GOD"
         huntress "This form, MY huntress form, is merely a shade"
         huntress "A shade of THIS"
         huntress "I've watched you through the trees\nFelt you with my roots\nYou're NOTHING but FOOD for my spirit"
+        show hectate_angry at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_angry "Your magic has become foul"
         hectate_angry "Guard your tongue Elaheh"
+        hide hectate_angry
+        show hectate_calm at hectate_witch1
+        hide angry_girl
+        show angry_girl at left
         hectate_calm "You may be powerful, but don't presume to compare yourself to me"
         hectate_calm "To me, you are as an insect and I shall not suffer the insult that you would delude yourself otherwise"
         hectate_calm "Had I wished you to die; your shade, your life tree, all that you are would burn, and one day shall"
@@ -1064,9 +1366,11 @@ label newgame:
         hectate_calm "But you must decide where to walk"
         player "Please! Lo to the wat-"
         hectate_angry "Do not pray to me child!\nThe girl deserves this fate\nOne day Elaheh you will meet yours"
+        hide hectate_calm with wipedown
         "Hecate fades away."
         huntress "You’re quite young\nYou'll fuel my essence for decades"
         player "No!"
+        hide huntress_dark with wipedown
         "The huntress fades away as does the twisted tree."
         player "Where are you!\nI'll find my way out"
         "You start to cry."
@@ -1086,10 +1390,14 @@ label newgame:
 
     label good_ending_with_skull:
         centered "{size=50}{color=#f4e842}GOOD ENDING with Bones{/size}{/color}"
+        show treewitch at right with dissolve
         treewitch "GIRL"
         treewitch "[e_name]"
         treewitch "You dare approach ME?!"
         player "Bones, what is this thing"
+        hide treewitch
+        show huntress_dark at huntress_mediocre_ending1
+        show treewitch at right
         "A beautiful huntress appears, walking towards you from behind the tree."
         huntress "That THING is MY essence"
         huntress "That THING is more powerful than any GOD"
@@ -1139,10 +1447,14 @@ label newgame:
 
     label neutral_ending_with_skull:
         centered "{size=50}{color=#f4e842}MEDIOCRE ENDING with Bones{/size}{/color}"
+        show treewitch at right with dissolve
         treewitch "GIRL"
         treewitch "[e_name]"
         treewitch "You dare approach ME?!"
         player "Bones, what is this thing"
+        hide treewitch
+        show huntress_dark at huntress_mediocre_ending1
+        show treewitch at right
         "A beautiful huntress appears, walking towards you from behind the tree."
         huntress "That THING is MY essence"
         huntress "That THING is more powerful than any GOD"
@@ -1182,10 +1494,14 @@ label newgame:
 
     label bad_ending_with_skull:
         centered "{size=50}{color=#f4e842}BAD ENDING with Bones{/size}{/color}"
+        show treewitch at right with dissolve
         treewitch "GIRL"
         treewitch "[e_name]"
         treewitch "You dare approach ME?!"
         player "Bones, what is this thing"
+        hide treewitch
+        show huntress_dark at huntress_mediocre_ending1
+        show treewitch at right
         "A beautiful huntress appears, walking towards you from behind the tree."
         huntress "That THING is MY essence"
         huntress "That THING is more powerful than any GOD"
@@ -1236,16 +1552,21 @@ label newgame:
         play waves "sound/waves.mp3" fadein 2.0
 
         centered "{size=50}{color=#f4e842}SIRENS with Hectate{/size}{/color}"
+        show mermaids_resize at right with dissolve
         "After twisting through various channels and paths you can hear faintly a song lightly carrying in the breeze. The music is lulling you towards an opening which reveals a large body of water. Three mermaids sit on rocks."
         mermaid "Sailors washed up on the shore​♪\nGuided by her sweet lure ​♫\nShe calls you from your safe ships​♪Nice face but mean tricks​♫"
         mermaid "The ocean licks its blue lips​♪\nHearing splashes and kicks​♫\nThe sailors song sings no more​♪\nWashed up on the shore​♫"
+        show angry_girl_resize at left with dissolve
         player "You sang that beautifully"
         mermaid "Thank you gorgeous"
+        show hectate_calm_resize at hectate_sirens1:
         hectate_calm "Sounds like that song came from personal experience"
         mermaid "The song was created by our mother ​Melpomene"
         hectate_calm "The siren of the eastern sea"
         mermaid "Yes, the very same"
         mermaid "Does the dear girl wish to cross our lake?"
+        hide angry_girl_resize
+        show angry_girl_resize at left
         player "Yes I do..Miss?"
         mermaid "Molpe\nIs the girl your friend Hecate?"
         hectate_calm "No"
@@ -1321,13 +1642,23 @@ label newgame:
         hectate_calm "I guess singing isn't everything\nIt's character that really matters\nBeing a good witch requires some things"
         hectate_calm "You need a clear tone and powerful spirit\nThe witch of these woods can sing beautifully\nI mentored her for awhile.."
         hectate_calm "Until she decided to defy my laws\nShe made this place\nThis abdominal place\nDark magic..spells of corruption"
+        hide hectate_calm_resize
+        show hectate_angry_resize at hectate_sirens2
         hectate_angry "When you break the laws of man you may evade capture or death"
         hectate_angry "When you break the laws of gods not even in death will you evade judgment"
         hectate_angry "SHE WILL BE JUDGED"
+        hide angry_girl_resize
+        show angry_girl_resize at left
         player "........"
+        hide hectate_angry_resize
+        show hectate_calm_resize at hectate_sirens2
         hectate_calm "Excuse me"
         hectate_calm "I lost control for a second"
+        hide hectate_angry_resize
+        show hectate_calm_resize at hectate_sirens2
         hectate_insane "Just breath we don't want another Atlantis incident"
+        hide angry_girl_resize
+        show angry_girl_resize at left
         player "Maybe we should keep going"
         hectate_calm "I agree child"
 
@@ -1348,11 +1679,13 @@ label newgame:
     play swamp "sound/swamp.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
+    show angry_girl at center with dissolve
     "The path you've followed has become little more than a slushy muck. Every step you take sucks yous feet down into the mud and it takes enormous effort pull a foot free to take a step forward."
     "You are filled with a sense of dread. Menacing eyes look out at you from between the rotting branches and from beneath the stagnant green water that seems to grab at your legs as you move."
     player "I knew I should've gone the other way!"
     player "I'm turning into a mosquito smorgasboard"
     player "By the looks of this swamp, hopefully that's the worst that happens"
+    #show bones_bog at topright with dissolve
     bones "Try living here sweetheart! It's a dry biscuit I can assure you."
     "The skeleton laying half-submerged in the bog turns it’s head and you swear, though it has no eyelids, that it just winked at you."
 
@@ -1446,6 +1779,7 @@ label newgame:
     #play entrance.mp3 sound
     play entrance "sound/entrance.mp3" fadein 2.0
     centered "{size=50}{color=#f4e842}Labyrinth Entrance with Bones{/size}{/color}"
+    show angry_girl at center with dissolve
     "You've been walking for what feels like forever. The forest feels like it’s crowding in around you on all sides, funneling you always forward."
     "Suddenly, the forest opens out into an eerie clearing. A giant open archway with high walls stands before you."
     player "Finally we made it! I was afraid I'd look like you when we found the entrance"
@@ -1483,6 +1817,7 @@ label newgame:
     #JUNCTION WITH BONES
     scene bg Junction with dissolve
     centered "{size=50}{color=#f4e842}Junction with Bones{/size}{/color}"
+    show angry_girl at center with dissolve
     "You travel the twisting and turning path for what must be hours. It’s impossible to know, you can’t see the sun through the dense canopy."
     "Finally, you come to a junction. It is unique only because it is the only time you have had to think about which way to go in what feels like forever."
 
@@ -1544,6 +1879,7 @@ label newgame:
 
         #play Fire.mp3 sound
         play Fire "sound/Fire.mp3" fadein 2.0
+        show angry_girl at left with dissolve
         "Upon entering the room, the first thing that registers on your mind is the smell. The second thing that registers is your attempt not to gag, due primarily to the first thing."
         "Your nostrils are assaulted by the stench of what must be a combination of rotting flesh and rancid food. The ratios between them varying with each breath to make new and noxious combinations."
         player "Eugh...! What is that?!"
@@ -1557,7 +1893,10 @@ label newgame:
         bones "Oh ha ha, yeah. Because all us bones look alike to you right?"
         player "Well yeah...kinda"
         "As if alerted by the sound of your voice, you begin to hear a low growl emanating from the surrounding shadows."
+        show chimera_resize at chimera_chimera1
         "An instinctual fear grips your heart as you see, stepping into the light, the face of a lion gradually emerge into view. It’s growl now not just heard but felt and you can’t help but back away."
+        hide chimera_resize
+        show chimera_resize at chimera_chimera2
         "As the lion continues stepping forward you notice not not all is as it seems. The lion’s tail, as it emerges from the darkness does not seem ordinary."
         "Suddenly, your entire field of vision is encompassed by a large pair of fangs. The lion’s tail, you now realise, is not a tail at all but large snake!"
         "Its jaws snap shut, right in front of your face having reached the limit of its length, and withdraws with a hiss, staring watchful as it hovers over the lion’s head."
@@ -1583,6 +1922,8 @@ label newgame:
             jump Argument
 
         label DoNotEatMe:
+            show angry_girl at left with dissolve
+            show chimera at right with dissolve
             player "Please don’t eat me!  I can probably be of help to you!"
             chimera "Yes, we hear that a lot too. Often accompanied by attempts at bribery or even with the promise to bring us more food."
             player "Um...Is that still an option?"
@@ -1597,6 +1938,8 @@ label newgame:
             return
 
         label Assistance:
+            show angry_girl at left with dissolve
+            show chimera at right with dissolve
             player "“Uh...little help Bones?!"
             bones "Yeah yeah\nHelp me Old Bones Kenobi, you’re my only hope"
             player "What?"
@@ -1627,6 +1970,8 @@ label newgame:
             jump monster_visit_check
 
         label Argument:
+            show angry_girl_resize at left with dissolve
+            show chimera_resize at right with dissolve
             player "But why?"
             chimera "Why will I eat you?  Why else but to sate my hunger"
             "The Chimera begins to advance on you, the lion’s growl and the snakes hiss growing louder."
@@ -1714,10 +2059,12 @@ label newgame:
             jump meet_witch
 
     label meet_witch:
-
         centered "{size=50}{color=#f4e842}MEET HUNTRESS{/size}{/color}"
+        hide sad_girl_resize
+        show angry_girl at left with dissolve
         "You've progressed further into the bog and are growing further fearful that you may never leave; suddenly you hear a bush shaking."
         player "Please don't be a witch, please don't be a witch, Please don't be a witch, please don't be a witch"
+        show huntress at right with dissolve
         "A Huntress springs forth."
         player "*Screams*"
         huntress "Shh the witch might hear, haha"
@@ -1744,12 +2091,14 @@ label newgame:
         #play waves.mp3 sound
         play waves "sound/waves.mp3" fadein 2.0
         centered "{size=50}{color=#f4e842}SIRENS with Bones{/size}{/color}"
+        show mermaids at right with dissolve
         "You choose the right path, you aren’t sure exactly why, maybe the path seems a little less claustrophobic and you’re ready for a little space to breathe."
         "You also think you can hear a song on the breeze in that direction."
         "You follow the winding path for some time, the song getting slowly louder and louder as you go. Finally, the path opens out to reveal a large body of water"
         "Three mermaids sit on rocks."
         "They are the ones singing the song you’ve been hearing, luring you always closer and closer."
         mermaid "Sailing on an anchor ​♫\nTrapped beneath the tides ​♪\nCurse the drowning sailor​♫\n And the wave he rides♪"
+        show angry_girl at left with dissolve
         player "Such a beautiful song"
         bones "That song was dark song"
         bones "I have a song"
