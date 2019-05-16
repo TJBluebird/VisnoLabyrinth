@@ -148,7 +148,9 @@ init:
     image bones_bog = "images/character/bones_bog.png"
 
     image stone = "images/character/stone.png"
-    image bones = "images/character/bones.png"
+    #image bones = "images/character/bones.png"
+    image totem = "images/character/Totem.png"
+
     #User's point
     define user_point = 0
 
@@ -368,6 +370,7 @@ label start:
 
     centered "{size=50}{color=#f4e842}Garden{/size}{/color}"
     show sad_girl_resize at left with dissolve
+    show totem at right with dissolve
     "You go into the Garden do do as your Mother wishes. Filled with a sudden sense of dread, you look around yourself, trying to take it all in like it is the last time you will ever see it."
     "It is a modest home, small by most standards, but you love it dearly. It was built entirely by your Father before he passed. You smile when you remember how proud the timbered roof had made him."
     "Your eyes fall on the Shrine nestled against the outer wall of the house and you need to fight down a feeling of revulsion. You know that the purpose of the Shrine is to hide the house from view of those that lurk in the woods and to protect the family from any evil that they might do."
@@ -1679,61 +1682,62 @@ label newgame:
     play swamp "sound/swamp.mp3" fadein 2.0
 
     centered "{size=50}{color=#f4e842}SWAMP{/size}{/color}"
-    show angry_girl at center with dissolve
+    show angry_girl at left with dissolve
+    show bones_bog at topright with dissolve
     "The path you've followed has become little more than a slushy muck. Every step you take sucks yous feet down into the mud and it takes enormous effort pull a foot free to take a step forward."
     "You are filled with a sense of dread. Menacing eyes look out at you from between the rotting branches and from beneath the stagnant green water that seems to grab at your legs as you move."
     player "I knew I should've gone the other way!"
     player "I'm turning into a mosquito smorgasboard"
     player "By the looks of this swamp, hopefully that's the worst that happens"
     #show bones_bog at topright with dissolve
-    bones "Try living here sweetheart! It's a dry biscuit I can assure you."
+    bones_bog "Try living here sweetheart! It's a dry biscuit I can assure you."
     "The skeleton laying half-submerged in the bog turns it’s head and you swear, though it has no eyelids, that it just winked at you."
 
     player "AHHHHHHHHH"
-    bones "AHHHHHHHHH"
+    bones_bog "AHHHHHHHHH"
     player "AHHHHHHHHH"
-    bones "AHHHHHHHHH Screaming is fun!"
+    bones_bog "AHHHHHHHHH Screaming is fun!"
 
     "You turn to run."
 
-    bones "Wait little lass, I'm not bad to the bone, trust me."
+    bones_bog "Wait little lass, I'm not bad to the bone, trust me."
     player "I've lost my mind! it's this swamp! I don't know where I'm going."
-    bones "I've lost my mind, my muscles, most recently my arm to a cheeky mutt! Stupid dogs..."
+    bones_bog "I've lost my mind, my muscles, most recently my arm to a cheeky mutt! Stupid dogs..."
     player "This isn't possible!"
-    bones "Ohhh I wish it wasn't, I had a bite of a golden apple.  ONE.MEASLY. BITE, if only I had eaten the whole thing"
-    bones "Maybe then I would have some skin. The magic has preserved me when clearly I should be dead."
-    bones "Gods I wish I was dead. Imagine all the things I could do, like not exist."
-    bones "Gods I wish I didn't exist."
+    bones_bog "Ohhh I wish it wasn't, I had a bite of a golden apple.  ONE.MEASLY. BITE, if only I had eaten the whole thing"
+    bones_bog "Maybe then I would have some skin. The magic has preserved me when clearly I should be dead."
+    bones_bog "Gods I wish I was dead. Imagine all the things I could do, like not exist."
+    bones_bog "Gods I wish I didn't exist."
     player "That's what you wish for?"
     player "That's silly, why not wish you had the entire apple."
-    bones "HEY! you watch mosquitoes eat your flesh and a mangy dog run away with your arm and see what YOU wish for."
-    bones "Geez."
+    bones_bog "HEY! you watch mosquitoes eat your flesh and a mangy dog run away with your arm and see what YOU wish for."
+    bones_bog "Geez."
     player "Uh, sorry, I guess, Mr...pile of.. Bones"
-    bones "Quite okay lassie"
+    bones_bog "Quite okay lassie"
     player "Whelp, I’d best be on my way"
-    bones "no, no, no, no, no, no Oh gods no. Please don't leave me here like this."
+    bones_bog "no, no, no, no, no, no Oh gods no. Please don't leave me here like this."
     player "I'm sorry but I'm on my way to see my uncle, my mother is sick and I need to tell him"
     player "Plus mother told me not to talk to strangers AND I don't think I can help you"
-    bones "Firstly, I'm not a stranger, I like to think we're friends, best friends, I'm your best friend Bones. What you see is what you get, no skeletons in my closet!"
+    bones_bog "Firstly, I'm not a stranger, I like to think we're friends, best friends, I'm your best friend Bones. What you see is what you get, no skeletons in my closet!"
     "Bones tries to smile. Unsuccessfully."
     player "I'm truly"
-    bones "Secondly, please there is a part two"
+    bones_bog "Secondly, please there is a part two"
     player "I have to see my"
-    bones "I CAN HELP YOUR MOTHER"
+    bones_bog "I CAN HELP YOUR MOTHER"
     player "How could YOU, a skeleton, a pile of bones incapable of anything help my mother"
-    bones "THE APPLE..THE GOLDEN APPLE, please sweet girl, please, look at me I should be dead but thanks to a single bite, TA-DUH, here lies old bones"
+    bones_bog "THE APPLE..THE GOLDEN APPLE, please sweet girl, please, look at me I should be dead but thanks to a single bite, TA-DUH, here lies old bones"
     player "Yeah, here lies 'wishes he was dead' apparently my best friend, old bones"
-    bones "Yes I know I don't look good for a skull in his forties but I only had a SINGLE bite"
-    bones "That bite has saved me from the clutches of death. Imagine what an entire apple could do for your mother"
+    bones_bog "Yes I know I don't look good for a skull in his forties but I only had a SINGLE bite"
+    bones_bog "That bite has saved me from the clutches of death. Imagine what an entire apple could do for your mother"
     player "How do I know you're not lying?"
-    bones "When was the last time you talked to a skull?"
+    bones_bog "When was the last time you talked to a skull?"
     player "Well-"
-    bones "Never!...well at least I hope you haven't"
-    bones "Makes you sound crazy if you have"
+    bones_bog "Never!...well at least I hope you haven't"
+    bones_bog "Makes you sound crazy if you have"
     player "If I do want to get this apple, what do you want in return?"
-    bones "Your company"
-    bones "Exciting conversations"
-    bones "Maybe you could figure out a way to kill me, when you've got a free minute?"
+    bones_bog "Your company"
+    bones_bog "Exciting conversations"
+    bones_bog "Maybe you could figure out a way to kill me, when you've got a free minute?"
 
     #Sound swamp.mp3 Stop
     stop swamp fadeout 2.0
@@ -1755,22 +1759,22 @@ label newgame:
 
     label partner_with_bones:
     player "Deal"
-    bones "I knew you were a smart girl, from the first moment I laid my eye sockets on you"
+    bones_bog "I knew you were a smart girl, from the first moment I laid my eye sockets on you"
     player "Sigh"
-    bones "...."
-    bones "Okay so if we're going to get this Golden Apple I'm going to need you to take me somewhere"
+    bones_bog "...."
+    bones_bog "Okay so if we're going to get this Golden Apple I'm going to need you to take me somewhere"
     player "Where?"
-    bones "A labyrinth, deary\nOh and what was your name littlein?"
+    bones_bog "A labyrinth, deary\nOh and what was your name littlein?"
     player "[e_name]"
-    bones "Funny... I think I know somebody by that name"
+    bones_bog "Funny... I think I know somebody by that name"
     player "What's your name?"
-    bones "M-m-Myers, no that's not it, maybe Mark, uhhh"
+    bones_bog "M-m-Myers, no that's not it, maybe Mark, uhhh"
     player "You can't remember your name"
-    bones "Well the dog ate my brain too, OKAY! I'm as empty as a fools bottle, half simple, donkey kicked! Alright!"
+    bones_bog "Well the dog ate my brain too, OKAY! I'm as empty as a fools bottle, half simple, donkey kicked! Alright!"
     player "Sorry, uhm, Bones"
-    bones "Geez.. no I'm sorry uh"
+    bones_bog "Geez.. no I'm sorry uh"
     player "[e_name]"
-    bones "YES, [e_name], I was getting there"
+    bones_bog "YES, [e_name], I was getting there"
 
 
      #LABYRINTH ENTRANCE
@@ -2021,20 +2025,20 @@ label newgame:
     label decline_skull:
         centered "{size=50}{color=#f4e842}DECLINE SKULL{/size}{/color}"
         player "This is not real"
-        bones "No you silly girl, it is!"
+        bones_bog "No you silly girl, it is!"
         player "I've just go to focus and take a breath"
-        bones "Listen to me."
+        bones_bog "Listen to me."
         player "Breath in"
         "Breath in"
-        bones "No listen you stu-"
+        bones_bog "No listen you stu-"
         player "And out"
-        bones "Would you like me to make sounds of the ocean too, wake up you little foo-"
+        bones_bog "Would you like me to make sounds of the ocean too, wake up you little foo-"
         "Breath out"
-        bones "No please, please help me, I can help you"
+        bones_bog "No please, please help me, I can help you"
         player "Goodbye not real skeleton. Goodbye crazy horrible swamp"
         "You start to walk away laughing. In the distance you can hear the skeleton."
-        bones "You silly fool! I hope the witch finds you, I hope she takes everything from you like she did me"
-        bones "I didn't mean it! Please I don't want the dog to come back and bury me."
+        bones_bog "You silly fool! I hope the witch finds you, I hope she takes everything from you like she did me"
+        bones_bog "I didn't mean it! Please I don't want the dog to come back and bury me."
 
 
     #(10)Branch: 'Exit Woods' or 'Continue On'
@@ -2055,10 +2059,10 @@ label newgame:
             return
 
         elif decline_skull_option == 2:
-            "Meet Witch"
             jump meet_witch
 
     label meet_witch:
+        hide bones_bog
         centered "{size=50}{color=#f4e842}MEET HUNTRESS{/size}{/color}"
         hide sad_girl_resize
         show angry_girl at left with dissolve
